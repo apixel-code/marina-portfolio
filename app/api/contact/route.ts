@@ -15,7 +15,6 @@ export async function POST(request: Request) {
       message: string;
     };
 
-    // Basic server-side validation
     if (!name || !email || !subject || !message) {
       return NextResponse.json({ error: "All fields are required." }, { status: 400 });
     }
@@ -23,7 +22,6 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Invalid email address." }, { status: 400 });
     }
 
-    // Send notification to Marina
     await resend.emails.send({
       from: "Portfolio Contact <onboarding@resend.dev>",
       to: OWNER_EMAIL,
@@ -40,25 +38,7 @@ export async function POST(request: Request) {
           <hr style="border:none;border-top:1px solid #1e293b;margin:16px 0"/>
           <p style="margin:0;line-height:1.7;white-space:pre-wrap">${message.replace(/</g, "&lt;")}</p>
           <hr style="border:none;border-top:1px solid #1e293b;margin:16px 0"/>
-          <p style="margin:0;font-size:12px;color:#475569">Sent from marina-akter.com portfolio contact form</p>
-        </div>
-      `,
-    });
-
-    // Send auto-reply to the client
-    await resend.emails.send({
-      from: "Marina Akter <onboarding@resend.dev>",
-      to: email,
-      subject: `Got your message, ${name}!`,
-      html: `
-        <div style="font-family:sans-serif;max-width:600px;margin:0 auto;padding:24px;background:#0a1428;color:#e2e8f0;border-radius:12px;border:1px solid #1e293b">
-          <h2 style="color:#3b82f6;margin-top:0">Thanks for reaching out, ${name}!</h2>
-          <p style="line-height:1.7;color:#94a3b8">I've received your message and will get back to you within 24 hours.</p>
-          <div style="padding:16px;background:#0f1e3a;border-radius:8px;border-left:3px solid #3b82f6;margin:16px 0">
-            <p style="margin:0;font-size:13px;color:#94a3b8;font-style:italic">"${message.replace(/</g, "&lt;").substring(0, 200)}${message.length > 200 ? "…" : ""}"</p>
-          </div>
-          <p style="line-height:1.7;color:#94a3b8">In the meantime, feel free to check out my work on <a href="https://github.com/marinaakter" style="color:#3b82f6">GitHub</a>.</p>
-          <p style="margin-bottom:0;color:#e2e8f0">— Marina</p>
+          <p style="margin:0;font-size:12px;color:#475569">Sent via marina portfolio contact form · Reply directly to respond to ${name}</p>
         </div>
       `,
     });
