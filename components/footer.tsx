@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Mail } from "lucide-react";
 import { SiGithub } from "react-icons/si";
-import { FaLinkedin } from "react-icons/fa";
+import { FaLinkedin, FaFacebook } from "react-icons/fa";
 import { portfolio } from "@/data/portfolio";
 import { fadeUp, stagger } from "@/lib/animations";
 
@@ -46,6 +46,7 @@ export function Footer() {
               {[
                 { href: portfolio.github, icon: <SiGithub size={16} />, label: "GitHub" },
                 { href: portfolio.linkedin, icon: <FaLinkedin size={16} />, label: "LinkedIn" },
+                { href: portfolio.facebook, icon: <FaFacebook size={16} />, label: "Facebook" },
                 { href: `mailto:${portfolio.email}`, icon: <Mail size={16} />, label: "Email" },
               ].map((social) => (
                 <motion.a

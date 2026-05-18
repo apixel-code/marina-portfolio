@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion, type Variants } from "framer-motion";
 import { Mail, MessageSquare, Copy, Check, Send } from "lucide-react";
 import { SiGithub } from "react-icons/si";
+import { FaFacebook } from "react-icons/fa";
 import { SectionHeading } from "./ui/section-heading";
 import { Button } from "./ui/button";
 import { portfolio } from "@/data/portfolio";
@@ -62,6 +63,7 @@ const contactItems: ContactInfo[] = [
   { icon: <Mail size={18} />, label: "Email", value: portfolio.email, href: `mailto:${portfolio.email}`, copyValue: portfolio.email },
   { icon: <MessageSquare size={18} />, label: "WhatsApp", value: portfolio.whatsapp, href: portfolio.whatsappLink, copyValue: portfolio.whatsapp },
   { icon: <SiGithub size={18} />, label: "GitHub", value: "github.com/marinaakter", href: portfolio.github, copyValue: portfolio.github },
+  { icon: <FaFacebook size={18} />, label: "Facebook", value: "facebook.com/marinaakter.me", href: portfolio.facebook, copyValue: portfolio.facebook },
 ];
 
 export function Contact() {

@@ -15,6 +15,7 @@ export const portfolio = {
   whatsappLink: "https://wa.me/8801603277275",
   github: "https://github.com/marinaakter",
   linkedin: "https://linkedin.com/in/marinaakter",
+  facebook: "https://www.facebook.com/marinaakter.me",
   apixel: {
     name: "Apixel",
     url: "https://www.apixel.net",
