@@ -6,7 +6,6 @@ import { Binary, Network, GitBranch, Workflow, Trophy } from "lucide-react";
 import { SectionHeading } from "./ui/section-heading";
 import { portfolio } from "@/data/portfolio";
 import { skillIconMap } from "@/lib/icon-map";
-import type { IconType } from "react-icons";
 import type { LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -54,17 +53,20 @@ function SkillCard({ name, level }: SkillCardProps) {
   const fallback = fallbackIconMap[name];
   const iconColor = brand?.color === "currentColor" ? "var(--foreground)" : brand?.color ?? fallback?.color ?? "var(--primary)";
 
+  const isHex = iconColor.startsWith("#");
+  const glowColor = isHex ? iconColor : "#3b82f6";
+
   return (
     <motion.div
       variants={cardVariants}
       layout
-      className="group rounded-xl border border-border bg-card p-4 transition-all duration-300 hover:-translate-y-0.5"
+      className="group rounded-xl border border-border bg-card p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/30"
       style={{
-        "--hover-glow": iconColor,
+        "--hover-glow": glowColor,
       } as React.CSSProperties}
       whileHover={{
-        boxShadow: `0 0 30px -10px ${iconColor}`,
-        borderColor: `${iconColor}40`,
+        boxShadow: `0 0 30px -10px ${glowColor}`,
+        borderColor: `${glowColor}40`,
       }}
     >
       <div className="flex items-center gap-3 mb-3">
