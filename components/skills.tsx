@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence, type Variants } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence, useInView, type Variants } from "framer-motion";
 import { Binary, Network, GitBranch, Workflow, Trophy, Sparkles, Bot } from "lucide-react";
 import { SectionHeading } from "./ui/section-heading";
 import { portfolio } from "@/data/portfolio";
@@ -57,8 +57,12 @@ function SkillCard({ name, level }: SkillCardProps) {
   const isHex = iconColor.startsWith("#");
   const glowColor = isHex ? iconColor : "#3b82f6";
 
+  const cardRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(cardRef, { once: false, margin: "-40px" });
+
   return (
     <motion.div
+      ref={cardRef}
       variants={cardVariants}
       layout
       className="group rounded-xl border border-border bg-card p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/30"
@@ -87,13 +91,12 @@ function SkillCard({ name, level }: SkillCardProps) {
       </div>
       <div className="h-1.5 rounded-full bg-muted overflow-hidden">
         <motion.div
-          className="h-full rounded-full bg-linear-to-r from-blue-600 to-cyan-400"
+          className="h-full rounded-full"
           initial={{ width: 0 }}
-          whileInView={{ width: `${level}%` }}
-          viewport={{ once: false }}
+          animate={{ width: isInView ? `${level}%` : 0 }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.1 }}
           style={{
-            background: `linear-gradient(to right, ${iconColor}aa, ${iconColor})`,
+            background: `linear-gradient(to right, ${glowColor}aa, ${glowColor})`,
           }}
         />
       </div>
