@@ -1,20 +1,29 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { Mail } from "lucide-react";
 import { SiGithub } from "react-icons/si";
 import { FaLinkedin } from "react-icons/fa";
 import { portfolio } from "@/data/portfolio";
+import { fadeUp, stagger } from "@/lib/animations";
 
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
     <footer className="border-t border-border bg-card">
-      {/* Thin gradient line */}
       <div className="h-px w-full bg-linear-to-r from-transparent via-primary/40 to-transparent" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+        <motion.div
+          variants={stagger(0.12)}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: false, margin: "-60px" }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10"
+        >
           {/* Brand block */}
-          <div>
+          <motion.div variants={fadeUp}>
             <div className="flex items-center gap-2.5 mb-3">
               <span className="w-8 h-8 rounded-lg bg-linear-to-br from-blue-600 to-cyan-400 flex items-center justify-center text-white text-xs font-bold font-mono">
                 MA
@@ -34,74 +43,79 @@ export function Footer() {
               {portfolio.tagline}
             </p>
             <div className="flex items-center gap-3">
-              <a
-                href={portfolio.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 flex items-center justify-center rounded-lg border border-border text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors"
-                aria-label="GitHub"
-              >
-                <SiGithub size={16} />
-              </a>
-              <a
-                href={portfolio.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-9 h-9 flex items-center justify-center rounded-lg border border-border text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors"
-                aria-label="LinkedIn"
-              >
-                <FaLinkedin size={16} />
-              </a>
-              <a
-                href={`mailto:${portfolio.email}`}
-                className="w-9 h-9 flex items-center justify-center rounded-lg border border-border text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors"
-                aria-label="Email"
-              >
-                <Mail size={16} />
-              </a>
+              {[
+                { href: portfolio.github, icon: <SiGithub size={16} />, label: "GitHub" },
+                { href: portfolio.linkedin, icon: <FaLinkedin size={16} />, label: "LinkedIn" },
+                { href: `mailto:${portfolio.email}`, icon: <Mail size={16} />, label: "Email" },
+              ].map((social) => (
+                <motion.a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  whileHover={{ y: -3, scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  className="w-9 h-9 flex items-center justify-center rounded-lg border border-border text-muted-foreground hover:text-foreground hover:border-primary/40 transition-colors"
+                >
+                  {social.icon}
+                </motion.a>
+              ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Explore */}
-          <div>
+          <motion.div variants={fadeUp}>
             <h3 className="text-sm font-semibold text-foreground mb-4">Explore</h3>
             <ul className="space-y-2.5">
-              {portfolio.navLinks.map((link) => (
-                <li key={link.href}>
+              {portfolio.navLinks.map((link, i) => (
+                <motion.li
+                  key={link.href}
+                  initial={{ opacity: 0, x: -10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: false }}
+                  transition={{ delay: i * 0.06 + 0.2 }}
+                >
                   <a
                     href={link.href}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    className="text-sm text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all inline-block"
                   >
                     {link.label}
                   </a>
-                </li>
+                </motion.li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Connect */}
-          <div>
+          <motion.div variants={fadeUp}>
             <h3 className="text-sm font-semibold text-foreground mb-4">Connect</h3>
             <p className="text-sm text-muted-foreground mb-5 leading-relaxed">
               Open to full-time roles, freelance projects, and interesting collaborations.
             </p>
-            <a
+            <motion.a
               href={`mailto:${portfolio.email}`}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-linear-to-r from-blue-600 via-blue-500 to-cyan-400 text-white text-sm font-medium shadow-[0_0_20px_-5px_rgba(59,130,246,0.6)] hover:shadow-[0_0_30px_-5px_rgba(59,130,246,0.8)] transition-shadow"
+              whileHover={{ scale: 1.03, boxShadow: "0 0 30px -5px rgba(59,130,246,0.8)" }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-linear-to-r from-blue-600 via-blue-500 to-cyan-400 text-white text-sm font-medium shadow-[0_0_20px_-5px_rgba(59,130,246,0.6)] transition-shadow"
             >
               <Mail size={14} />
               Email Me
-            </a>
-          </div>
-        </div>
+            </motion.a>
+          </motion.div>
+        </motion.div>
 
         {/* Bottom row */}
-        <div className="pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
+        <motion.div
+          className="pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: false }}
+          transition={{ delay: 0.4 }}
+        >
           <p>© {year} Marina Akter. All rights reserved.</p>
-          <p>
-            Built with Next.js, Tailwind v4, and lots of ☕
-          </p>
-        </div>
+          <p>Built with Next.js, Tailwind v4, and lots of ☕</p>
+        </motion.div>
       </div>
     </footer>
   );

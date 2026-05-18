@@ -38,15 +38,10 @@ const fallbackIconMap: Record<string, { Icon: LucideIcon; color: string }> = {
   "Analytics & Reporting": { Icon: GitBranch, color: "var(--primary)" },
 };
 
-const containerVariants: Variants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.05 } },
-};
-
 const cardVariants: Variants = {
-  hidden: { opacity: 0, scale: 0.95 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.3, ease: "easeOut" } },
-  exit: { opacity: 0, scale: 0.95, transition: { duration: 0.2 } },
+  hidden: { opacity: 0, scale: 0.9, filter: "blur(8px)" },
+  visible: { opacity: 1, scale: 1, filter: "blur(0px)", transition: { duration: 0.4, ease: "easeOut" } },
+  exit: { opacity: 0, scale: 0.95, filter: "blur(4px)", transition: { duration: 0.18 } },
 };
 
 interface SkillCardProps {
@@ -95,7 +90,7 @@ function SkillCard({ name, level }: SkillCardProps) {
           className="h-full rounded-full bg-linear-to-r from-blue-600 to-cyan-400"
           initial={{ width: 0 }}
           whileInView={{ width: `${level}%` }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.1 }}
           style={{
             background: `linear-gradient(to right, ${iconColor}aa, ${iconColor})`,
@@ -108,6 +103,14 @@ function SkillCard({ name, level }: SkillCardProps) {
 
 export function Skills() {
   const [activeTab, setActiveTab] = useState<TabKey>("all");
+  const [prevTabIndex, setPrevTabIndex] = useState(0);
+
+  const handleTabChange = (key: TabKey) => {
+    const prev = TABS.findIndex((t) => t.key === activeTab);
+    const next = TABS.findIndex((t) => t.key === key);
+    setPrevTabIndex(prev < next ? -1 : 1);
+    setActiveTab(key);
+  };
 
   const getSkills = () => {
     if (activeTab === "all") {
@@ -136,37 +139,58 @@ export function Skills() {
         {/* Tabs */}
         <div className="flex flex-wrap justify-center gap-2 mb-10">
           {TABS.map((tab) => (
-            <button
+            <motion.button
               key={tab.key}
-              onClick={() => setActiveTab(tab.key)}
+              onClick={() => handleTabChange(tab.key)}
+              whileTap={{ scale: 0.95 }}
               className={cn(
-                "px-4 py-1.5 rounded-lg text-sm font-medium transition-all duration-200 border",
+                "relative px-4 py-1.5 rounded-lg text-sm font-medium transition-colors duration-200 border",
                 activeTab === tab.key
-                  ? "bg-primary text-primary-foreground border-primary shadow-[0_0_15px_-3px_rgba(59,130,246,0.5)]"
+                  ? "text-primary-foreground border-primary"
                   : "border-border text-muted-foreground hover:text-foreground hover:border-primary/30 bg-card",
-                tab.key === "problem-solving" &&
-                  activeTab !== tab.key &&
-                  "border-primary/20 text-primary/70"
+                tab.key === "ai" && activeTab !== tab.key && "border-purple-500/30 text-purple-400/80",
+                tab.key === "problem-solving" && activeTab !== tab.key && "border-primary/20 text-primary/70"
               )}
             >
-              {tab.label}
-            </button>
+              {activeTab === tab.key && (
+                <motion.span
+                  layoutId="tab-pill"
+                  className="absolute inset-0 rounded-lg bg-primary shadow-[0_0_15px_-3px_rgba(59,130,246,0.5)]"
+                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                />
+              )}
+              <span className="relative z-10">{tab.label}</span>
+            </motion.button>
           ))}
         </div>
 
-        {/* Grid */}
-        <AnimatePresence mode="wait">
+        {/* Grid — slides in from direction of tab change */}
+        <AnimatePresence mode="wait" custom={prevTabIndex}>
           <motion.div
             key={activeTab}
-            variants={containerVariants}
+            custom={prevTabIndex}
+            variants={{
+              hidden: (dir: number) => ({ opacity: 0, x: dir * 40, filter: "blur(4px)" }),
+              visible: { opacity: 1, x: 0, filter: "blur(0px)", transition: { duration: 0.3, ease: "easeOut" } },
+              exit: (dir: number) => ({ opacity: 0, x: dir * -20, filter: "blur(4px)", transition: { duration: 0.18 } }),
+            }}
             initial="hidden"
             animate="visible"
-            exit={{ opacity: 0 }}
+            exit="exit"
             className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3"
           >
-            {skills.map((skill) => (
-              <SkillCard key={`${activeTab}-${skill.name}`} {...skill} />
-            ))}
+            <AnimatePresence>
+              {skills.map((skill, i) => (
+                <motion.div
+                  key={`${activeTab}-${skill.name}`}
+                  initial={{ opacity: 0, scale: 0.9, filter: "blur(8px)" }}
+                  animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                  transition={{ duration: 0.35, ease: "easeOut", delay: i * 0.04 }}
+                >
+                  <SkillCard {...skill} />
+                </motion.div>
+              ))}
+            </AnimatePresence>
           </motion.div>
         </AnimatePresence>
       </div>

@@ -1,9 +1,10 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { motion } from "framer-motion";
 import { Code2, Server, Layers, Database, Gauge, Sparkles, Check } from "lucide-react";
 import { SectionHeading } from "./ui/section-heading";
 import { portfolio } from "@/data/portfolio";
+import { tiltIn, stagger } from "@/lib/animations";
 
 const iconMap: Record<string, React.ReactNode> = {
   Code2: <Code2 size={24} />,
@@ -12,16 +13,6 @@ const iconMap: Record<string, React.ReactNode> = {
   Database: <Database size={24} />,
   Gauge: <Gauge size={24} />,
   Sparkles: <Sparkles size={24} />,
-};
-
-const containerVariants: Variants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.08 } },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
 export function Services() {
@@ -41,36 +32,53 @@ export function Services() {
         />
 
         <motion.div
-          variants={containerVariants}
+          variants={stagger(0.08)}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-80px" }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {portfolio.services.map((service) => (
-            <motion.div key={service.id} variants={itemVariants}>
-              <div className="group h-full rounded-2xl border border-border bg-card p-6 transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.5)]">
-                <div className="flex items-start justify-between mb-5">
-                  <div className="flex items-center justify-center w-12 h-12 rounded-xl border border-primary/20 bg-primary/10 text-primary group-hover:border-primary/40 transition-colors">
-                    {iconMap[service.icon]}
-                  </div>
-                  <span className="text-2xl font-mono font-bold text-muted/50 group-hover:text-primary/30 transition-colors">
-                    {service.id}
-                  </span>
-                </div>
-                <h3 className="font-semibold text-foreground mb-2">{service.title}</h3>
-                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-                  {service.description}
-                </p>
-                <ul className="space-y-2">
-                  {service.bullets.map((b) => (
-                    <li key={b} className="flex items-start gap-2 text-sm text-muted-foreground">
-                      <Check size={14} className="text-primary mt-0.5 shrink-0" />
-                      {b}
-                    </li>
-                  ))}
-                </ul>
+            <motion.div
+              key={service.id}
+              variants={tiltIn}
+              whileHover={{ y: -6, transition: { duration: 0.25 } }}
+              className="group h-full rounded-2xl border border-border bg-card p-6 cursor-default transition-colors hover:border-primary/40 hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.5)]"
+            >
+              <div className="flex items-start justify-between mb-5">
+                <motion.div
+                  className="flex items-center justify-center w-12 h-12 rounded-xl border border-primary/20 bg-primary/10 text-primary group-hover:border-primary/50 transition-colors"
+                  whileHover={{ scale: 1.15, rotate: -8, transition: { type: "spring", stiffness: 400, damping: 10 } }}
+                >
+                  {iconMap[service.icon]}
+                </motion.div>
+                <motion.span
+                  className="text-2xl font-mono font-bold text-muted/50 group-hover:text-primary/30 transition-colors"
+                  initial={{ opacity: 0, x: 10 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: false }}
+                  transition={{ delay: 0.2 }}
+                >
+                  {service.id}
+                </motion.span>
               </div>
+              <h3 className="font-semibold text-foreground mb-2">{service.title}</h3>
+              <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{service.description}</p>
+              <ul className="space-y-2">
+                {service.bullets.map((b, i) => (
+                  <motion.li
+                    key={b}
+                    className="flex items-start gap-2 text-sm text-muted-foreground"
+                    initial={{ opacity: 0, x: -8 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: false }}
+                    transition={{ delay: 0.15 + i * 0.07 }}
+                  >
+                    <Check size={14} className="text-primary mt-0.5 shrink-0" />
+                    {b}
+                  </motion.li>
+                ))}
+              </ul>
             </motion.div>
           ))}
         </motion.div>

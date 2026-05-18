@@ -7,15 +7,11 @@ import { SiGithub } from "react-icons/si";
 import { SectionHeading } from "./ui/section-heading";
 import { Button } from "./ui/button";
 import { portfolio } from "@/data/portfolio";
+import { fadeLeft, fadeRight, stagger, scaleIn } from "@/lib/animations";
 
-const containerVariants: Variants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+const inputVariants: Variants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
 };
 
 function CopyButton({ value }: { value: string }) {
@@ -28,13 +24,29 @@ function CopyButton({ value }: { value: string }) {
   };
 
   return (
-    <button
+    <motion.button
       onClick={handleCopy}
+      whileTap={{ scale: 0.9 }}
       className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
       aria-label="Copy to clipboard"
     >
-      {copied ? <Check size={14} className="text-emerald-400" /> : <Copy size={14} />}
-    </button>
+      <AnimatePresenceCopy copied={copied} />
+    </motion.button>
+  );
+}
+
+function AnimatePresenceCopy({ copied }: { copied: boolean }) {
+  return copied ? (
+    <motion.span
+      key="check"
+      initial={{ scale: 0, rotate: -90 }}
+      animate={{ scale: 1, rotate: 0 }}
+      transition={{ type: "spring", stiffness: 500, damping: 20 }}
+    >
+      <Check size={14} className="text-emerald-400" />
+    </motion.span>
+  ) : (
+    <Copy size={14} />
   );
 }
 
@@ -47,36 +59,13 @@ interface ContactInfo {
 }
 
 const contactItems: ContactInfo[] = [
-  {
-    icon: <Mail size={18} />,
-    label: "Email",
-    value: portfolio.email,
-    href: `mailto:${portfolio.email}`,
-    copyValue: portfolio.email,
-  },
-  {
-    icon: <MessageSquare size={18} />,
-    label: "WhatsApp",
-    value: portfolio.whatsapp,
-    href: portfolio.whatsappLink,
-    copyValue: portfolio.whatsapp,
-  },
-  {
-    icon: <SiGithub size={18} />,
-    label: "GitHub",
-    value: "github.com/marinaakter",
-    href: portfolio.github,
-    copyValue: portfolio.github,
-  },
+  { icon: <Mail size={18} />, label: "Email", value: portfolio.email, href: `mailto:${portfolio.email}`, copyValue: portfolio.email },
+  { icon: <MessageSquare size={18} />, label: "WhatsApp", value: portfolio.whatsapp, href: portfolio.whatsappLink, copyValue: portfolio.whatsapp },
+  { icon: <SiGithub size={18} />, label: "GitHub", value: "github.com/marinaakter", href: portfolio.github, copyValue: portfolio.github },
 ];
 
 export function Contact() {
-  const [formState, setFormState] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
+  const [formState, setFormState] = useState({ name: "", email: "", subject: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
@@ -93,10 +82,7 @@ export function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const errs = validate();
-    if (Object.keys(errs).length) {
-      setErrors(errs);
-      return;
-    }
+    if (Object.keys(errs).length) { setErrors(errs); return; }
     // TODO: Connect to a real email service (e.g. Resend, EmailJS, or a Next.js API route)
     console.log("Contact form submitted:", formState);
     setSubmitted(true);
@@ -105,21 +91,17 @@ export function Contact() {
   };
 
   return (
-    <section
-      id="contact"
-      aria-labelledby="contact-heading"
-      className="py-20 md:py-28 px-4 sm:px-6 bg-muted/30"
-    >
+    <section id="contact" aria-labelledby="contact-heading" className="py-20 md:py-28 px-4 sm:px-6 bg-muted/30">
       <div className="max-w-7xl mx-auto">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12"
-        >
-          {/* Left */}
-          <motion.div variants={itemVariants}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+          {/* Left — slides from left */}
+          <motion.div
+            variants={fadeLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, margin: "-100px" }}
+          >
             <SectionHeading
               eyebrow="Get In Touch"
               title="Let's Build Something Together"
@@ -127,136 +109,126 @@ export function Contact() {
               id="contact-heading"
             />
 
-            <div className="space-y-4">
+            <motion.div
+              className="space-y-4"
+              variants={stagger(0.1)}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false }}
+            >
               {contactItems.map((item) => (
-                <div
+                <motion.div
                   key={item.label}
-                  className="flex items-center gap-4 p-4 rounded-xl border border-border bg-card"
+                  variants={scaleIn}
+                  whileHover={{ x: 4, transition: { duration: 0.2 } }}
+                  className="flex items-center gap-4 p-4 rounded-xl border border-border bg-card hover:border-primary/30 transition-colors"
                 >
                   <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 text-primary shrink-0">
                     {item.icon}
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-xs text-muted-foreground mb-0.5">{item.label}</p>
-                    <a
-                      href={item.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm font-medium text-foreground hover:text-primary transition-colors truncate block"
-                    >
+                    <a href={item.href} target="_blank" rel="noopener noreferrer"
+                      className="text-sm font-medium text-foreground hover:text-primary transition-colors truncate block">
                       {item.value}
                     </a>
                   </div>
                   <CopyButton value={item.copyValue} />
-                </div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </motion.div>
 
-          {/* Right: Form */}
-          <motion.div variants={itemVariants}>
+          {/* Right — slides from right */}
+          <motion.div
+            variants={fadeRight}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, margin: "-100px" }}
+          >
             {submitted ? (
-              <div className="h-full flex items-center justify-center rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-10 text-center">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="h-full flex items-center justify-center rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-10 text-center"
+              >
                 <div>
-                  <div className="w-16 h-16 mx-auto rounded-full bg-emerald-500/10 flex items-center justify-center mb-4">
-                    <Check size={28} className="text-emerald-400" />
-                  </div>
-                  <h3 className="font-semibold text-foreground mb-2">Message Sent!</h3>
-                  <p className="text-sm text-muted-foreground">
-                    Thanks for reaching out. I&apos;ll get back to you shortly.
-                  </p>
-                  <button
-                    onClick={() => setSubmitted(false)}
-                    className="mt-4 text-sm text-primary hover:underline"
+                  <motion.div
+                    className="w-16 h-16 mx-auto rounded-full bg-emerald-500/10 flex items-center justify-center mb-4"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: "spring", stiffness: 500, damping: 20, delay: 0.1 }}
                   >
+                    <Check size={28} className="text-emerald-400" />
+                  </motion.div>
+                  <h3 className="font-semibold text-foreground mb-2">Message Sent!</h3>
+                  <p className="text-sm text-muted-foreground">Thanks for reaching out. I&apos;ll get back to you shortly.</p>
+                  <button onClick={() => setSubmitted(false)} className="mt-4 text-sm text-primary hover:underline">
                     Send another message
                   </button>
                 </div>
-              </div>
+              </motion.div>
             ) : (
-              <form
+              <motion.form
                 onSubmit={handleSubmit}
                 noValidate
                 className="rounded-2xl border border-border bg-card p-6 space-y-5"
+                variants={stagger(0.07)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, margin: "-100px" }}
               >
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-1.5">
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      value={formState.name}
-                      onChange={(e) =>
-                        setFormState((s) => ({ ...s, name: e.target.value }))
-                      }
-                      className="w-full px-4 py-2.5 rounded-xl border border-border bg-muted text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-primary/40 transition-colors"
-                      placeholder="Your name"
-                    />
-                    {errors.name && (
-                      <p className="mt-1 text-xs text-red-400">{errors.name}</p>
-                    )}
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-foreground mb-1.5">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      value={formState.email}
-                      onChange={(e) =>
-                        setFormState((s) => ({ ...s, email: e.target.value }))
-                      }
-                      className="w-full px-4 py-2.5 rounded-xl border border-border bg-muted text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-primary/40 transition-colors"
-                      placeholder="your@email.com"
-                    />
-                    {errors.email && (
-                      <p className="mt-1 text-xs text-red-400">{errors.email}</p>
-                    )}
-                  </div>
+                  {[
+                    { key: "name", label: "Name", type: "text", placeholder: "Your name" },
+                    { key: "email", label: "Email", type: "email", placeholder: "your@email.com" },
+                  ].map((field) => (
+                    <motion.div key={field.key} variants={inputVariants}>
+                      <label className="block text-sm font-medium text-foreground mb-1.5">{field.label}</label>
+                      <input
+                        type={field.type}
+                        value={formState[field.key as keyof typeof formState]}
+                        onChange={(e) => setFormState((s) => ({ ...s, [field.key]: e.target.value }))}
+                        className="w-full px-4 py-2.5 rounded-xl border border-border bg-muted text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-primary/40 transition-all"
+                        placeholder={field.placeholder}
+                      />
+                      {errors[field.key] && <p className="mt-1 text-xs text-red-400">{errors[field.key]}</p>}
+                    </motion.div>
+                  ))}
                 </div>
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-1.5">
-                    Subject
-                  </label>
+                <motion.div variants={inputVariants}>
+                  <label className="block text-sm font-medium text-foreground mb-1.5">Subject</label>
                   <input
                     type="text"
                     value={formState.subject}
-                    onChange={(e) =>
-                      setFormState((s) => ({ ...s, subject: e.target.value }))
-                    }
-                    className="w-full px-4 py-2.5 rounded-xl border border-border bg-muted text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-primary/40 transition-colors"
+                    onChange={(e) => setFormState((s) => ({ ...s, subject: e.target.value }))}
+                    className="w-full px-4 py-2.5 rounded-xl border border-border bg-muted text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-primary/40 transition-all"
                     placeholder="Project inquiry, collaboration..."
                   />
-                  {errors.subject && (
-                    <p className="mt-1 text-xs text-red-400">{errors.subject}</p>
-                  )}
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-foreground mb-1.5">
-                    Message
-                  </label>
+                  {errors.subject && <p className="mt-1 text-xs text-red-400">{errors.subject}</p>}
+                </motion.div>
+                <motion.div variants={inputVariants}>
+                  <label className="block text-sm font-medium text-foreground mb-1.5">Message</label>
                   <textarea
                     rows={5}
                     value={formState.message}
-                    onChange={(e) =>
-                      setFormState((s) => ({ ...s, message: e.target.value }))
-                    }
-                    className="w-full px-4 py-2.5 rounded-xl border border-border bg-muted text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-primary/40 transition-colors resize-none"
+                    onChange={(e) => setFormState((s) => ({ ...s, message: e.target.value }))}
+                    className="w-full px-4 py-2.5 rounded-xl border border-border bg-muted text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-primary/40 transition-all resize-none"
                     placeholder="Tell me about your project..."
                   />
-                  {errors.message && (
-                    <p className="mt-1 text-xs text-red-400">{errors.message}</p>
-                  )}
-                </div>
-                <Button type="submit" variant="primary" size="lg" className="w-full">
-                  <Send size={16} />
-                  Send Message
-                </Button>
-              </form>
+                  {errors.message && <p className="mt-1 text-xs text-red-400">{errors.message}</p>}
+                </motion.div>
+                <motion.div variants={inputVariants}>
+                  <Button type="submit" variant="primary" size="lg" className="w-full">
+                    <Send size={16} />
+                    Send Message
+                  </Button>
+                </motion.div>
+              </motion.form>
             )}
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
