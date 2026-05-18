@@ -101,7 +101,7 @@ function ProjectCard({
             <ExternalLink size={14} />
             Live
           </motion.a>
-          <motion.a
+          {/* <motion.a
             href={project.codeLink}
             target="_blank"
             rel="noopener noreferrer"
@@ -111,7 +111,7 @@ function ProjectCard({
           >
             <SiGithub size={14} />
             Code
-          </motion.a>
+          </motion.a> */}
         </motion.div>
       </motion.div>
 
