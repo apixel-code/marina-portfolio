@@ -75,7 +75,7 @@ export function Hero() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[88vh] md:min-h-[90vh] flex items-center justify-center overflow-hidden"
+      className="relative min-h-[88vh] md:min-h-[90vh] flex items-center justify-center overflow-hidden pt-24 md:pt-28 pb-20"
       aria-label="Hero"
     >
       {/* Grid background */}
@@ -215,7 +215,7 @@ export function Hero() {
 
       {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-6 md:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-muted-foreground"
+        className="absolute bottom-8 md:bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-muted-foreground"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
