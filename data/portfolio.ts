@@ -1,7 +1,7 @@
 export const portfolio = {
   name: "Marina Akter",
   role: "MERN Stack Developer & Problem Solver",
-  roleHero: "MERN Developer & Founder @ Apixel",
+  roleHero: "MERN Stack Developer & Founder @ Apixel",
   tagline:
     "Building scalable web applications, integrating AI into products, and solving complex problems with clean, performant code.",
   shortBio:
@@ -186,7 +186,7 @@ export const portfolio = {
       featured: true,
       liveLink: "https://askaichat.app/",
       codeLink: "https://github.com/marinaakter",
-      image: "/images/project-ai-chat.png",
+      image: "https://picsum.photos/seed/aichat/800/450",
     },
     {
       id: 2,
@@ -198,7 +198,7 @@ export const portfolio = {
       featured: true,
       liveLink: "https://armgroup.vercel.app/",
       codeLink: "https://github.com/marinaakter",
-      image: "/images/project-ecommerce.png",
+      image: "https://picsum.photos/seed/ecommerce/800/450",
     },
     {
       id: 3,
@@ -210,7 +210,7 @@ export const portfolio = {
       featured: true,
       liveLink: "https://apixeltaskflow.vercel.app/",
       codeLink: "https://github.com/marinaakter",
-      image: "/images/project-tasks.png",
+      image: "https://picsum.photos/seed/taskflow/800/450",
     },
     {
       id: 4,
@@ -222,7 +222,7 @@ export const portfolio = {
       featured: false,
       liveLink: "https://youritsolutionn.netlify.app/",
       codeLink: "https://github.com/marinaakter",
-      image: "/images/project-cms.png",
+      image: "https://picsum.photos/seed/itsolutions/800/450",
     },
     {
       id: 5,
@@ -234,7 +234,7 @@ export const portfolio = {
       featured: false,
       liveLink: "https://www.dmsbcsh.com/",
       codeLink: "https://github.com/marinaakter",
-      image: "/images/project-medical.png",
+      image: "https://picsum.photos/seed/medical/800/450",
     },
     {
       id: 6,
@@ -246,7 +246,7 @@ export const portfolio = {
       featured: false,
       liveLink: "https://example.com",
       codeLink: "https://github.com/marinaakter",
-      image: "/images/project-restaurant.png",
+      image: "https://picsum.photos/seed/restaurant/800/450",
     },
     {
       id: 7,
@@ -258,7 +258,7 @@ export const portfolio = {
       featured: false,
       liveLink: "https://example.com",
       codeLink: "https://github.com/marinaakter",
-      image: "/images/project-consultancy.png",
+      image: "https://picsum.photos/seed/consultancy/800/450",
     },
     {
       id: 8,
@@ -270,7 +270,7 @@ export const portfolio = {
       featured: false,
       liveLink: "https://example.com",
       codeLink: "https://github.com/marinaakter",
-      image: "/images/project-realestate.png",
+      image: "https://picsum.photos/seed/realestate/800/450",
     },
     {
       id: 9,
@@ -282,7 +282,7 @@ export const portfolio = {
       featured: false,
       liveLink: "https://example.com",
       codeLink: "https://github.com/marinaakter",
-      image: "/images/project-algo.png",
+      image: "https://picsum.photos/seed/algorithm/800/450",
     },
   ],
 

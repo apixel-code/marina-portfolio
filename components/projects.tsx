@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 import { SiGithub } from "react-icons/si";
@@ -52,18 +53,28 @@ function ProjectCard({
         transition: { duration: 0.25 },
       }}
     >
-      {/* Image placeholder with 3D tilt on hover */}
+      {/* Project image */}
       <motion.div
         className="relative h-48 bg-linear-to-br from-muted to-card overflow-hidden"
         whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
       >
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="grid grid-cols-3 gap-1.5 opacity-20">
-            {Array.from({ length: 9 }).map((_, i) => (
-              <div key={i} className="w-8 h-8 rounded bg-primary/40" />
-            ))}
+        {project.image ? (
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="grid grid-cols-3 gap-1.5 opacity-20">
+              {Array.from({ length: 9 }).map((_, i) => (
+                <div key={i} className="w-8 h-8 rounded bg-primary/40" />
+              ))}
+            </div>
           </div>
-        </div>
+        )}
         <div className="absolute inset-0 bg-linear-to-t from-card/80 to-transparent" />
 
         <div className="absolute top-3 left-3">
