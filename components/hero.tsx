@@ -125,7 +125,15 @@ export function Hero() {
           variants={itemVariants}
           className="text-xs font-mono uppercase tracking-[0.25em] text-primary mb-4"
         >
-          Senior MERN Stack Developer &amp; Problem Solver
+          Senior MERN Developer &amp; Founder @{" "}
+          <a
+            href="https://www.apixel.net"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline decoration-primary/40 underline-offset-2 hover:text-accent transition-colors"
+          >
+            Apixel
+          </a>
         </motion.p>
 
         {/* Name */}

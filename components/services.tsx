@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import { Code2, Server, Layers, Database, Gauge, ShieldCheck, Check } from "lucide-react";
+import { Code2, Server, Layers, Database, Gauge, Sparkles, Check } from "lucide-react";
 import { SectionHeading } from "./ui/section-heading";
 import { portfolio } from "@/data/portfolio";
 
@@ -11,7 +11,7 @@ const iconMap: Record<string, React.ReactNode> = {
   Layers: <Layers size={24} />,
   Database: <Database size={24} />,
   Gauge: <Gauge size={24} />,
-  ShieldCheck: <ShieldCheck size={24} />,
+  Sparkles: <Sparkles size={24} />,
 };
 
 const containerVariants: Variants = {

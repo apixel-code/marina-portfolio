@@ -22,9 +22,15 @@ import {
   SiMeta,
   SiVscodium,
   SiCanva,
+  SiOpenai,
+  SiLangchain,
+  SiHuggingface,
+  SiVercel,
+  SiAnthropic,
 } from "react-icons/si";
 
 export const skillIconMap: Record<string, { Icon: IconType; color: string }> = {
+  // Frontend
   React: { Icon: SiReact, color: "#61DAFB" },
   "React.js": { Icon: SiReact, color: "#61DAFB" },
   "Next.js": { Icon: SiNextdotjs, color: "currentColor" },
@@ -33,11 +39,21 @@ export const skillIconMap: Record<string, { Icon: IconType; color: string }> = {
   HTML5: { Icon: SiHtml5, color: "#E34F26" },
   CSS3: { Icon: SiCss, color: "#1572B6" },
   "Tailwind CSS": { Icon: SiTailwindcss, color: "#06B6D4" },
+  // Backend
   "Node.js": { Icon: SiNodedotjs, color: "#339933" },
   "Express.js": { Icon: SiExpress, color: "currentColor" },
   Express: { Icon: SiExpress, color: "currentColor" },
+  // Database
   MongoDB: { Icon: SiMongodb, color: "#47A248" },
   Firebase: { Icon: SiFirebase, color: "#FFCA28" },
+  // AI
+  "OpenAI API": { Icon: SiOpenai, color: "currentColor" },
+  OpenAI: { Icon: SiOpenai, color: "currentColor" },
+  LangChain: { Icon: SiLangchain, color: "#1C3C3C" },
+  "Hugging Face": { Icon: SiHuggingface, color: "#FF9D00" },
+  "Vercel AI SDK": { Icon: SiVercel, color: "currentColor" },
+  Anthropic: { Icon: SiAnthropic, color: "currentColor" },
+  // Other
   Python: { Icon: SiPython, color: "#3776AB" },
   "C++": { Icon: SiCplusplus, color: "#00599C" },
   Git: { Icon: SiGit, color: "#F05032" },

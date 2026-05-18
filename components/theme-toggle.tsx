@@ -3,13 +3,19 @@
 import { useTheme } from "next-themes";
 import { Sun, Moon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-  // resolvedTheme is undefined before hydration — use as mounting guard
-  if (!resolvedTheme) {
-    return <div className="w-9 h-9" />;
+  // Must use mounted guard to match server render (placeholder div) and avoid hydration mismatch.
+  // eslint-disable-next-line react-hooks/set-state-in-effect
+  useEffect(() => { setMounted(true); }, []);
+
+  if (!mounted) {
+    // Renders same element on server and client first pass — no hydration mismatch.
+    return <div className="w-9 h-9" aria-hidden />;
   }
 
   const isDark = resolvedTheme === "dark";

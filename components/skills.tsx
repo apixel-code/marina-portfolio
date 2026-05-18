@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
-import { Binary, Network, GitBranch, Workflow, Trophy } from "lucide-react";
+import { Binary, Network, GitBranch, Workflow, Trophy, Sparkles, Bot } from "lucide-react";
 import { SectionHeading } from "./ui/section-heading";
 import { portfolio } from "@/data/portfolio";
 import { skillIconMap } from "@/lib/icon-map";
@@ -16,17 +16,23 @@ const TABS: { key: TabKey; label: string }[] = [
   { key: "frontend", label: "Frontend" },
   { key: "backend", label: "Backend" },
   { key: "database", label: "Database" },
+  { key: "ai", label: "AI & LLMs" },
   { key: "problem-solving", label: "Problem Solving" },
   { key: "tools", label: "Tools" },
   { key: "additional", label: "Additional" },
 ];
 
 const fallbackIconMap: Record<string, { Icon: LucideIcon; color: string }> = {
+  // Problem solving
   "Data Structures": { Icon: Binary, color: "var(--primary)" },
   "Algorithms": { Icon: GitBranch, color: "var(--primary)" },
   "Competitive Programming": { Icon: Trophy, color: "var(--primary)" },
   "REST API": { Icon: Network, color: "var(--primary)" },
   "JWT Auth": { Icon: Workflow, color: "var(--primary)" },
+  // AI
+  "Prompt Engineering": { Icon: Sparkles, color: "#a855f7" },
+  "AI-Assisted Dev": { Icon: Bot, color: "#8b5cf6" },
+  // Additional
   "SEO Optimization": { Icon: Network, color: "var(--primary)" },
   "Content Strategy": { Icon: Workflow, color: "var(--primary)" },
   "Analytics & Reporting": { Icon: GitBranch, color: "var(--primary)" },

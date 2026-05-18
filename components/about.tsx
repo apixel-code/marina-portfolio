@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import { Code2, Binary, Gauge, Users } from "lucide-react";
+import { Code2, Binary, Gauge, Sparkles } from "lucide-react";
 import { SectionHeading } from "./ui/section-heading";
 import { Card } from "./ui/card";
 import { portfolio } from "@/data/portfolio";
@@ -10,7 +10,7 @@ const iconMap: Record<string, React.ReactNode> = {
   Code2: <Code2 size={20} />,
   Binary: <Binary size={20} />,
   Gauge: <Gauge size={20} />,
-  Users: <Users size={20} />,
+  Sparkles: <Sparkles size={20} />,
 };
 
 const containerVariants: Variants = {

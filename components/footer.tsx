@@ -15,12 +15,21 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
           {/* Brand block */}
           <div>
-            <div className="flex items-center gap-2.5 mb-4">
+            <div className="flex items-center gap-2.5 mb-3">
               <span className="w-8 h-8 rounded-lg bg-linear-to-br from-blue-600 to-cyan-400 flex items-center justify-center text-white text-xs font-bold font-mono">
                 MA
               </span>
               <span className="font-semibold text-foreground">Marina Akter</span>
             </div>
+            <a
+              href={portfolio.apixel.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1 mb-4 rounded-full border border-primary/30 bg-primary/10 text-primary text-xs font-mono hover:border-primary/60 hover:bg-primary/20 transition-colors"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+              {portfolio.apixel.role} @ {portfolio.apixel.name}
+            </a>
             <p className="text-sm text-muted-foreground leading-relaxed mb-5 max-w-xs">
               {portfolio.tagline}
             </p>
