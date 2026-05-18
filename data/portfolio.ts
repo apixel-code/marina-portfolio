@@ -182,7 +182,13 @@ export const portfolio = {
       title: "AI Chat Assistant",
       description:
         "Production-grade AI chat app built with Next.js App Router, OpenAI GPT-4o, and Vercel AI SDK. Features streaming responses, conversation history, and a clean chat UI.",
-      tags: ["Next.js", "OpenAI", "Vercel AI SDK", "TypeScript", "Tailwind CSS"],
+      tags: [
+        "Next.js",
+        "OpenAI",
+        "Vercel AI SDK",
+        "TypeScript",
+        "Tailwind CSS",
+      ],
       status: "completed" as const,
       featured: true,
       liveLink: "https://askaichat.app/",
@@ -227,6 +233,30 @@ export const portfolio = {
     },
     {
       id: 5,
+      title: "Student Consultancy Site",
+      description:
+        "Full-stack consultancy platform for student services with course listings, inquiry forms, admission guidance, and an admin management panel.",
+      tags: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
+      status: "in-progress" as const,
+      featured: false,
+      liveLink: "https://student-consultancy-six.vercel.app",
+      codeLink: "https://github.com/marinaakter",
+      image: "https://picsum.photos/seed/consultancy/800/450",
+    },
+    {
+      id: 6,
+      title: "Real Estate Website",
+      description:
+        "Property listing platform with advanced search filters, property detail pages, agent profiles, virtual tour support, and a contact inquiry system.",
+      tags: ["Next.js", "MongoDB", "Tailwind CSS", "TypeScript"],
+      status: "in-progress" as const,
+      featured: false,
+      liveLink: "https://realestatesite-seven.vercel.app",
+      codeLink: "https://github.com/marinaakter",
+      image: "https://picsum.photos/seed/realestate/800/450",
+    },
+    {
+      id: 7,
       title: "Medical & Health",
       description:
         "Healthcare information platform for a medical institution featuring department listings, doctor profiles, appointment details, and patient resources.",
@@ -238,7 +268,7 @@ export const portfolio = {
       image: "https://picsum.photos/seed/medical/800/450",
     },
     {
-      id: 6,
+      id: 8,
       title: "Restaurant Booking System",
       description:
         "Full-stack reservation platform with real-time slot availability, email confirmation, and an admin panel for table management.",
@@ -248,30 +278,6 @@ export const portfolio = {
       liveLink: "https://example.com",
       codeLink: "https://github.com/marinaakter",
       image: "https://picsum.photos/seed/restaurant/800/450",
-    },
-    {
-      id: 7,
-      title: "Student Consultancy Site",
-      description:
-        "Full-stack consultancy platform for student services with course listings, inquiry forms, admission guidance, and an admin management panel.",
-      tags: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
-      status: "in-progress" as const,
-      featured: false,
-      liveLink: "https://example.com",
-      codeLink: "https://github.com/marinaakter",
-      image: "https://picsum.photos/seed/consultancy/800/450",
-    },
-    {
-      id: 8,
-      title: "Real Estate Website",
-      description:
-        "Property listing platform with advanced search filters, property detail pages, agent profiles, virtual tour support, and a contact inquiry system.",
-      tags: ["Next.js", "MongoDB", "Tailwind CSS", "TypeScript"],
-      status: "in-progress" as const,
-      featured: false,
-      liveLink: "https://example.com",
-      codeLink: "https://github.com/marinaakter",
-      image: "https://picsum.photos/seed/realestate/800/450",
     },
     {
       id: 9,
@@ -295,7 +301,7 @@ export const portfolio = {
       organization: "Apixel — IT Company",
       organizationUrl: "https://www.apixel.net",
       location: "Dhaka, Bangladesh",
-      period: "2023 – Present",
+      period: "2024 – Present",
       description:
         "Co-founded and run Apixel, an IT company delivering full-stack web solutions, AI-integrated products, and digital transformation services to clients across industries.",
       highlights: [
