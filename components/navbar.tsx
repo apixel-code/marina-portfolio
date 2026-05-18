@@ -44,16 +44,17 @@ export function Navbar() {
 
   return (
     <>
-      <header
-        className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-          isScrolled
-            ? "backdrop-blur-xl bg-background/70 border-b border-border shadow-sm"
-            : "bg-transparent"
-        )}
-      >
+      <div className="fixed top-0 inset-x-0 z-50 flex justify-center px-4 sm:px-6 lg:px-8">
+        <header
+          className={cn(
+            "w-full max-w-6xl rounded-b-2xl border-x border-b transition-all duration-300",
+            isScrolled
+              ? "bg-background/80 backdrop-blur-xl border-border shadow-[0_8px_32px_-8px_rgba(0,0,0,0.25)]"
+              : "bg-background/60 backdrop-blur-md border-border/40 shadow-sm"
+          )}
+        >
         <nav
-          className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between"
+          className="px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between"
           aria-label="Main navigation"
         >
           {/* Logo */}
@@ -122,6 +123,7 @@ export function Navbar() {
           </div>
         </nav>
       </header>
+      </div>
 
       {/* Mobile menu */}
       <AnimatePresence>
@@ -131,7 +133,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 top-16 z-40 backdrop-blur-xl bg-background/95 flex flex-col p-6 md:hidden"
+            className="fixed inset-0 top-14 z-40 backdrop-blur-xl bg-background/95 flex flex-col p-6 md:hidden"
           >
             <ul className="flex flex-col gap-2 mt-4" role="list">
               {portfolio.navLinks.map((link, i) => {
