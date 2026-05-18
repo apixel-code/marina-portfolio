@@ -16,7 +16,7 @@ const iconMap: Record<string, React.ReactNode> = {
 export function About() {
   return (
     <section id="about" aria-labelledby="about-heading" className="py-16 md:py-24 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading — full width, centered */}
         <SectionHeading
           eyebrow="About Me"

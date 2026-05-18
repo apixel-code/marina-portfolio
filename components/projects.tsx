@@ -141,7 +141,7 @@ export function Projects() {
 
   return (
     <section id="projects" aria-labelledby="projects-heading" className="py-16 md:py-24 bg-muted/30 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Portfolio"
           title="Projects I've Shipped"

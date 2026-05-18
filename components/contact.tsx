@@ -83,7 +83,7 @@ export function Contact() {
     return e;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     const errs = validate();
     if (Object.keys(errs).length) { setErrors(errs); return; }
@@ -116,7 +116,7 @@ export function Contact() {
 
   return (
     <section id="contact" aria-labelledby="contact-heading" className="py-16 md:py-24 bg-muted/30 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading — full width, centered */}
         <SectionHeading
           eyebrow="Get In Touch"
