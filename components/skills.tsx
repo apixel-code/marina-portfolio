@@ -125,7 +125,7 @@ export function Skills() {
     <section
       id="skills"
       aria-labelledby="skills-heading"
-      className="py-20 md:py-28 px-4 sm:px-6"
+      className="py-16 md:py-24 px-4 sm:px-6 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
         <SectionHeading
@@ -136,15 +136,16 @@ export function Skills() {
           id="skills-heading"
         />
 
-        {/* Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
+        {/* Tabs — horizontal scroll on mobile, wrap on larger screens */}
+        <div className="overflow-x-auto pb-2 mb-10 -mx-4 px-4 sm:mx-0 sm:px-0">
+          <div className="flex gap-2 sm:flex-wrap sm:justify-center w-max sm:w-auto mx-auto">
           {TABS.map((tab) => (
             <motion.button
               key={tab.key}
               onClick={() => handleTabChange(tab.key)}
               whileTap={{ scale: 0.95 }}
               className={cn(
-                "relative px-4 py-1.5 rounded-lg text-sm font-medium transition-colors duration-200 border",
+                "relative whitespace-nowrap px-3 py-1.5 sm:px-4 rounded-lg text-xs sm:text-sm font-medium transition-colors duration-200 border shrink-0",
                 activeTab === tab.key
                   ? "text-primary-foreground border-primary"
                   : "border-border text-muted-foreground hover:text-foreground hover:border-primary/30 bg-card",
@@ -162,6 +163,7 @@ export function Skills() {
               <span className="relative z-10">{tab.label}</span>
             </motion.button>
           ))}
+          </div>
         </div>
 
         {/* Grid — slides in from direction of tab change */}

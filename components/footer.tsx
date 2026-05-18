@@ -39,7 +39,7 @@ export function Footer() {
               <span className="w-1.5 h-1.5 rounded-full bg-primary" />
               {portfolio.apixel.role} @ {portfolio.apixel.name}
             </a>
-            <p className="text-sm text-muted-foreground leading-relaxed mb-5 max-w-xs">
+            <p className="text-sm text-muted-foreground leading-relaxed mb-5 max-w-full md:max-w-xs">
               {portfolio.tagline}
             </p>
             <div className="flex items-center gap-3">

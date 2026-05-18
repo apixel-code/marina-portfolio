@@ -113,8 +113,17 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" aria-labelledby="contact-heading" className="py-20 md:py-28 px-4 sm:px-6 bg-muted/30">
+    <section id="contact" aria-labelledby="contact-heading" className="py-16 md:py-24 px-4 sm:px-6 bg-muted/30 overflow-hidden">
       <div className="max-w-7xl mx-auto">
+        {/* Heading — full width, centered */}
+        <SectionHeading
+          eyebrow="Get In Touch"
+          title="Let's Build Something Together"
+          description="Have a project in mind or want to discuss an opportunity? I'd love to hear from you."
+          centered
+          id="contact-heading"
+        />
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
 
           {/* Left — slides from left */}
@@ -124,12 +133,6 @@ export function Contact() {
             whileInView="visible"
             viewport={{ once: false, margin: "-100px" }}
           >
-            <SectionHeading
-              eyebrow="Get In Touch"
-              title="Let's Build Something Together"
-              description="Have a project in mind or want to discuss an opportunity? I'd love to hear from you."
-              id="contact-heading"
-            />
 
             <motion.div
               className="space-y-4"
@@ -195,7 +198,7 @@ export function Contact() {
               <motion.form
                 onSubmit={handleSubmit}
                 noValidate
-                className="rounded-2xl border border-border bg-card p-6 space-y-5"
+                className="rounded-2xl border border-border bg-card p-4 sm:p-6 space-y-4 sm:space-y-5"
                 variants={stagger(0.07)}
                 initial="hidden"
                 whileInView="visible"

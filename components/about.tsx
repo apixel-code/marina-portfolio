@@ -15,8 +15,16 @@ const iconMap: Record<string, React.ReactNode> = {
 
 export function About() {
   return (
-    <section id="about" aria-labelledby="about-heading" className="py-20 md:py-28 px-4 sm:px-6">
+    <section id="about" aria-labelledby="about-heading" className="py-16 md:py-24 px-4 sm:px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto">
+        {/* Heading — full width, centered */}
+        <SectionHeading
+          eyebrow="About Me"
+          title="Engineer by Craft, Problem Solver by Nature"
+          centered
+          id="about-heading"
+        />
+
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
 
           {/* Left: bio — slides in from left */}
@@ -26,11 +34,6 @@ export function About() {
             whileInView="visible"
             viewport={{ once: false, margin: "-100px" }}
           >
-            <SectionHeading
-              eyebrow="About Me"
-              title="Engineer by Craft, Problem Solver by Nature"
-              id="about-heading"
-            />
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p>{portfolio.shortBio}</p>
               <p>{portfolio.longBio}</p>

@@ -20,7 +20,7 @@ export function Services() {
     <section
       id="services"
       aria-labelledby="services-heading"
-      className="py-20 md:py-28 px-4 sm:px-6 bg-muted/30"
+      className="py-16 md:py-24 px-4 sm:px-6 bg-muted/30 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
         <SectionHeading

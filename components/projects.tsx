@@ -129,7 +129,7 @@ export function Projects() {
   const rest = filtered.filter((p) => !p.featured);
 
   return (
-    <section id="projects" aria-labelledby="projects-heading" className="py-20 md:py-28 px-4 sm:px-6 bg-muted/30">
+    <section id="projects" aria-labelledby="projects-heading" className="py-16 md:py-24 px-4 sm:px-6 bg-muted/30 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <SectionHeading
           eyebrow="Portfolio"
