@@ -67,6 +67,8 @@ const contactItems: ContactInfo[] = [
 export function Contact() {
   const [formState, setFormState] = useState({ name: "", email: "", subject: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [serverError, setServerError] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const validate = () => {
@@ -79,15 +81,35 @@ export function Contact() {
     return e;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const errs = validate();
     if (Object.keys(errs).length) { setErrors(errs); return; }
-    // TODO: Connect to a real email service (e.g. Resend, EmailJS, or a Next.js API route)
-    console.log("Contact form submitted:", formState);
-    setSubmitted(true);
-    setFormState({ name: "", email: "", subject: "", message: "" });
-    setErrors({});
+
+    setLoading(true);
+    setServerError("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formState),
+      });
+      const data = await res.json();
+
+      if (!res.ok) {
+        setServerError(data.error ?? "Something went wrong. Please try again.");
+        return;
+      }
+
+      setSubmitted(true);
+      setFormState({ name: "", email: "", subject: "", message: "" });
+      setErrors({});
+    } catch {
+      setServerError("Network error. Please check your connection and try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -219,10 +241,38 @@ export function Contact() {
                   />
                   {errors.message && <p className="mt-1 text-xs text-red-400">{errors.message}</p>}
                 </motion.div>
+                {serverError && (
+                  <motion.p
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded-xl px-4 py-3"
+                  >
+                    {serverError}
+                  </motion.p>
+                )}
                 <motion.div variants={inputVariants}>
-                  <Button type="submit" variant="primary" size="lg" className="w-full">
-                    <Send size={16} />
-                    Send Message
+                  <Button
+                    type="submit"
+                    variant="primary"
+                    size="lg"
+                    className="w-full"
+                    disabled={loading}
+                  >
+                    {loading ? (
+                      <>
+                        <motion.span
+                          animate={{ rotate: 360 }}
+                          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                          className="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full"
+                        />
+                        Sending…
+                      </>
+                    ) : (
+                      <>
+                        <Send size={16} />
+                        Send Message
+                      </>
+                    )}
                   </Button>
                 </motion.div>
               </motion.form>
