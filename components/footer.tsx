@@ -14,7 +14,7 @@ export function Footer() {
     <footer className="border-t border-border bg-card">
       <div className="h-px w-full bg-linear-to-r from-transparent via-primary/40 to-transparent" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <motion.div
           variants={stagger(0.12)}
           initial="hidden"

@@ -140,8 +140,8 @@ export function Projects() {
   const rest = filtered.filter((p) => !p.featured);
 
   return (
-    <section id="projects" aria-labelledby="projects-heading" className="py-16 md:py-24 px-4 sm:px-6 bg-muted/30 overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <section id="projects" aria-labelledby="projects-heading" className="py-16 md:py-24 bg-muted/30 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Portfolio"
           title="Projects I've Shipped"
@@ -158,7 +158,7 @@ export function Projects() {
               onClick={() => setFilter(f.key)}
               whileTap={{ scale: 0.95 }}
               className={cn(
-                "relative px-4 py-1.5 rounded-lg text-sm border transition-colors duration-200",
+                "relative px-4 py-1.5 rounded-lg text-sm border transition-colors duration-200 cursor-pointer",
                 filter === f.key
                   ? "text-primary-foreground border-primary"
                   : "border-border text-muted-foreground hover:border-primary/30 hover:text-foreground bg-card"

@@ -125,9 +125,9 @@ export function Skills() {
     <section
       id="skills"
       aria-labelledby="skills-heading"
-      className="py-16 md:py-24 px-4 sm:px-6 overflow-hidden"
+      className="py-16 md:py-24 overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Technical Skills"
           title="My Toolkit"
@@ -145,7 +145,7 @@ export function Skills() {
               onClick={() => handleTabChange(tab.key)}
               whileTap={{ scale: 0.95 }}
               className={cn(
-                "relative whitespace-nowrap px-3 py-1.5 sm:px-4 rounded-lg text-xs sm:text-sm font-medium transition-colors duration-200 border shrink-0",
+                "relative whitespace-nowrap px-3 py-1.5 sm:px-4 rounded-lg text-xs sm:text-sm font-medium transition-colors duration-200 border shrink-0 cursor-pointer",
                 activeTab === tab.key
                   ? "text-primary-foreground border-primary"
                   : "border-border text-muted-foreground hover:text-foreground hover:border-primary/30 bg-card",

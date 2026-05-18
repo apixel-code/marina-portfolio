@@ -13,8 +13,8 @@ export function Experience() {
   const lineInView = useInView(lineRef, { once: false, margin: "-100px" });
 
   return (
-    <section id="experience" aria-labelledby="experience-heading" className="py-16 md:py-24 px-4 sm:px-6 overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <section id="experience" aria-labelledby="experience-heading" className="py-16 md:py-24 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeading
           eyebrow="Background"
           title="Experience & Education"

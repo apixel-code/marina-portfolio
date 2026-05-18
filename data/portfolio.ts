@@ -309,7 +309,7 @@ export const portfolio = {
       title: "Full-Stack Developer",
       organization: "Tech Startup (Remote)",
       location: "Dhaka, Bangladesh",
-      period: "2022 – 2023",
+      period: "2023 – 2024",
       description:
         "Built and maintained full-stack MERN applications for clients across e-commerce, SaaS, and content platforms. Responsible for architecture decisions, API design, and front-end performance.",
       highlights: [
@@ -324,7 +324,7 @@ export const portfolio = {
       title: "BSc in Computer Science & Engineering",
       organization: "Independent University, Bangladesh (IUB)",
       location: "Dhaka, Bangladesh",
-      period: "2021 – Present",
+      period: "2023 – Present",
       description:
         "Studying core CS disciplines: data structures, algorithms, operating systems, databases, and software engineering. Active in competitive programming and hackathons.",
       highlights: [

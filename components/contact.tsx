@@ -27,7 +27,7 @@ function CopyButton({ value }: { value: string }) {
     <motion.button
       onClick={handleCopy}
       whileTap={{ scale: 0.9 }}
-      className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+      className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
       aria-label="Copy to clipboard"
     >
       <AnimatePresenceCopy copied={copied} />
@@ -113,8 +113,8 @@ export function Contact() {
   };
 
   return (
-    <section id="contact" aria-labelledby="contact-heading" className="py-16 md:py-24 px-4 sm:px-6 bg-muted/30 overflow-hidden">
-      <div className="max-w-7xl mx-auto">
+    <section id="contact" aria-labelledby="contact-heading" className="py-16 md:py-24 bg-muted/30 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading — full width, centered */}
         <SectionHeading
           eyebrow="Get In Touch"
@@ -189,7 +189,7 @@ export function Contact() {
                   </motion.div>
                   <h3 className="font-semibold text-foreground mb-2">Message Sent!</h3>
                   <p className="text-sm text-muted-foreground">Thanks for reaching out. I&apos;ll get back to you shortly.</p>
-                  <button onClick={() => setSubmitted(false)} className="mt-4 text-sm text-primary hover:underline">
+                  <button onClick={() => setSubmitted(false)} className="mt-4 text-sm text-primary hover:underline cursor-pointer">
                     Send another message
                   </button>
                 </div>

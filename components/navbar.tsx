@@ -58,7 +58,7 @@ export function Navbar() {
               <li key={link.href}>
                 <button
                   onClick={() => handleNavClick(link.href)}
-                  className="px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground rounded-lg hover:bg-muted transition-colors"
+                  className="px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground rounded-lg hover:bg-muted transition-colors cursor-pointer"
                 >
                   {link.label}
                 </button>
@@ -79,7 +79,7 @@ export function Navbar() {
             </Button>
             {/* Hamburger */}
             <button
-              className="md:hidden p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+              className="md:hidden p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors cursor-pointer"
               onClick={() => setIsMobileOpen((v) => !v)}
               aria-label={isMobileOpen ? "Close menu" : "Open menu"}
               aria-expanded={isMobileOpen}
@@ -110,7 +110,7 @@ export function Navbar() {
                 >
                   <button
                     onClick={() => handleNavClick(link.href)}
-                    className="w-full text-left px-4 py-3 text-lg font-medium text-foreground hover:text-primary hover:bg-muted rounded-xl transition-colors"
+                    className="w-full text-left px-4 py-3 text-lg font-medium text-foreground hover:text-primary hover:bg-muted rounded-xl transition-colors cursor-pointer"
                   >
                     {link.label}
                   </button>
