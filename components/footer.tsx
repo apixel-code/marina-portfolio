@@ -108,14 +108,13 @@ export function Footer() {
 
         {/* Bottom row */}
         <motion.div
-          className="pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground"
+          className="pt-6 border-t border-border flex items-center justify-center text-xs text-muted-foreground"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: false }}
           transition={{ delay: 0.4 }}
         >
           <p>© {year} Marina Akter. All rights reserved.</p>
-          <p>Built with Next.js, Tailwind v4, and lots of ☕</p>
         </motion.div>
       </div>
     </footer>

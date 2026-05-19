@@ -193,7 +193,7 @@ export const portfolio = {
       featured: true,
       liveLink: "https://askaichat.app/",
       codeLink: "https://github.com/marinaakter",
-      image: "https://picsum.photos/seed/aichat/800/450",
+      image: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=800&h=450&fit=crop&q=80",
     },
     {
       id: 2,
@@ -205,7 +205,7 @@ export const portfolio = {
       featured: true,
       liveLink: "https://armgroup.vercel.app/",
       codeLink: "https://github.com/marinaakter",
-      image: "https://picsum.photos/seed/ecommerce/800/450",
+      image: "/images/e-commerce.png",
     },
     {
       id: 3,
@@ -217,7 +217,7 @@ export const portfolio = {
       featured: true,
       liveLink: "https://apixeltaskflow.vercel.app/",
       codeLink: "https://github.com/marinaakter",
-      image: "https://picsum.photos/seed/taskflow/800/450",
+      image: "/images/TaskFlow.png",
     },
     {
       id: 4,
@@ -229,7 +229,7 @@ export const portfolio = {
       featured: false,
       liveLink: "https://youritsolutionn.netlify.app/",
       codeLink: "https://github.com/marinaakter",
-      image: "https://picsum.photos/seed/itsolutions/800/450",
+      image: "/images/youritsolution.png",
     },
     {
       id: 5,
@@ -241,7 +241,7 @@ export const portfolio = {
       featured: false,
       liveLink: "https://student-consultancy-six.vercel.app",
       codeLink: "https://github.com/marinaakter",
-      image: "https://picsum.photos/seed/consultancy/800/450",
+      image: "/images/StudentConsultancy.png",
     },
     {
       id: 6,
@@ -253,7 +253,7 @@ export const portfolio = {
       featured: false,
       liveLink: "https://realestatesite-seven.vercel.app",
       codeLink: "https://github.com/marinaakter",
-      image: "https://picsum.photos/seed/realestate/800/450",
+      image: "/images/RealEstate.png",
     },
     {
       id: 7,
@@ -265,7 +265,7 @@ export const portfolio = {
       featured: false,
       liveLink: "https://www.dmsbcsh.com/",
       codeLink: "https://github.com/marinaakter",
-      image: "https://picsum.photos/seed/medical/800/450",
+      image: "/images/dentalsite.png",
     },
     {
       id: 8,
@@ -277,7 +277,7 @@ export const portfolio = {
       featured: false,
       liveLink: "https://example.com",
       codeLink: "https://github.com/marinaakter",
-      image: "https://picsum.photos/seed/restaurant/800/450",
+      image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=450&fit=crop&q=80",
     },
     {
       id: 9,
@@ -289,7 +289,7 @@ export const portfolio = {
       featured: false,
       liveLink: "https://example.com",
       codeLink: "https://github.com/marinaakter",
-      image: "https://picsum.photos/seed/algorithm/800/450",
+      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=450&fit=crop&q=80",
     },
   ],
 

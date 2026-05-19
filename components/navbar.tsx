@@ -66,7 +66,7 @@ export function Navbar() {
             <span className="w-8 h-8 rounded-lg bg-linear-to-br from-blue-600 to-cyan-400 flex items-center justify-center text-white text-xs font-bold font-mono shadow-[0_0_15px_-3px_rgba(59,130,246,0.6)]">
               MA
             </span>
-            <span className="font-semibold text-foreground text-sm hidden sm:block">
+            <span className="font-semibold text-foreground text-sm sm:block">
               Marina Akter
             </span>
           </a>
