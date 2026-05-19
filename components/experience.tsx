@@ -75,7 +75,7 @@ export function Experience() {
                   {/* Card */}
                   <div className={cn("flex-1 md:max-w-[calc(50%-2rem)]", isLeft ? "md:pr-10" : "md:pl-10")}>
                     <motion.div
-                      className="rounded-2xl border border-border bg-card p-4 md:p-6"
+                      className="rounded-2xl border border-border bg-card p-4 md:p-6 shadow-sm dark:shadow-none"
                       whileHover={{ y: -4, borderColor: "rgba(59,130,246,0.3)", boxShadow: "0 0 30px -10px rgba(59,130,246,0.3)", transition: { duration: 0.2 } }}
                     >
                       <div className="flex flex-wrap items-center gap-2 mb-3">

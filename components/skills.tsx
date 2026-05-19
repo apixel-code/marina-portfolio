@@ -65,7 +65,7 @@ function SkillCard({ name, level }: SkillCardProps) {
       ref={cardRef}
       variants={cardVariants}
       layout
-      className="group rounded-xl border border-border bg-card p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/30"
+      className="group rounded-xl border border-border bg-card p-4 transition-all duration-300 shadow-sm dark:shadow-none hover:-translate-y-0.5 hover:border-primary/30"
       style={{
         "--hover-glow": glowColor,
       } as React.CSSProperties}

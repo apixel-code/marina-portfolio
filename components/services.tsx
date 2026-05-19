@@ -43,7 +43,7 @@ export function Services() {
               key={service.id}
               variants={tiltIn}
               whileHover={{ y: -6, transition: { duration: 0.25 } }}
-              className="group h-full rounded-2xl border border-border bg-card p-6 cursor-default transition-colors hover:border-primary/40 hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.5)]"
+              className="group h-full rounded-2xl border border-border bg-card p-6 cursor-default transition-colors shadow-sm dark:shadow-none hover:border-primary/40 hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.5)]"
             >
               <div className="flex items-start justify-between mb-5">
                 <motion.div

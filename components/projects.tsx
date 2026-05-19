@@ -45,7 +45,7 @@ function ProjectCard({
     <motion.article
       variants={variant}
       layout
-      className="group rounded-2xl border border-border bg-card overflow-hidden cursor-default"
+      className="group rounded-2xl border border-border bg-card overflow-hidden cursor-default shadow-sm dark:shadow-none"
       whileHover={{
         y: -6,
         borderColor: "rgba(59,130,246,0.4)",
@@ -75,7 +75,7 @@ function ProjectCard({
             </div>
           </div>
         )}
-        <div className="absolute inset-0 bg-linear-to-t from-card/80 to-transparent" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/10 to-transparent" />
 
         <div className="absolute top-3 left-3">
           <Badge variant={project.status === "completed" ? "success" : "warning"}>

@@ -148,7 +148,7 @@ export function Contact() {
                   key={item.label}
                   variants={scaleIn}
                   whileHover={{ x: 4, transition: { duration: 0.2 } }}
-                  className="flex items-center gap-4 p-4 rounded-xl border border-border bg-card hover:border-primary/30 transition-colors"
+                  className="flex items-center gap-4 p-4 rounded-xl border border-border bg-card shadow-sm dark:shadow-none hover:border-primary/30 transition-colors"
                 >
                   <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary/10 text-primary shrink-0">
                     {item.icon}
@@ -200,7 +200,7 @@ export function Contact() {
               <motion.form
                 onSubmit={handleSubmit}
                 noValidate
-                className="rounded-2xl border border-border bg-card p-4 sm:p-6 space-y-4 sm:space-y-5"
+                className="rounded-2xl border border-border bg-card p-4 sm:p-6 space-y-4 sm:space-y-5 shadow-sm dark:shadow-none"
                 variants={stagger(0.07)}
                 initial="hidden"
                 whileInView="visible"

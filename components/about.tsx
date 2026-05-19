@@ -72,7 +72,7 @@ export function About() {
                 key={trait.title}
                 variants={fadeRight}
                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                className="rounded-2xl border border-border bg-card p-6 cursor-default group transition-colors hover:border-primary/40 hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.4)]"
+                className="rounded-2xl border border-border bg-card p-6 cursor-default group transition-colors shadow-sm dark:shadow-none hover:border-primary/40 hover:shadow-[0_0_40px_-10px_rgba(59,130,246,0.4)]"
               >
                 <motion.div
                   className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 text-primary mb-4"
