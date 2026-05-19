@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { motion, useMotionValue, useTransform, type Variants } from "framer-motion";
+import { motion, useMotionValue, useTransform, useSpring, type Variants } from "framer-motion";
 import { ArrowRight, ChevronDown, Mail } from "lucide-react";
 import { Button } from "./ui/button";
 import { portfolio } from "@/data/portfolio";
@@ -36,22 +36,29 @@ interface FloatingIconProps {
 
 function FloatingIcon({ item, mouseX, mouseY }: FloatingIconProps) {
   const entry = skillIconMap[item.name];
-  const parallaxX = useTransform(mouseX, [-0.5, 0.5], [-10, 10]);
-  const parallaxY = useTransform(mouseY, [-0.5, 0.5], [-6, 6]);
+  const rawX = useTransform(mouseX, [-0.5, 0.5], [-10, 10]);
+  const rawY = useTransform(mouseY, [-0.5, 0.5], [-6, 6]);
+  const springX = useSpring(rawX, { stiffness: 50, damping: 18, mass: 0.8 });
+  const springY = useSpring(rawY, { stiffness: 50, damping: 18, mass: 0.8 });
   if (!entry) return null;
   const { Icon, color } = entry;
   return (
+    // Outer div: smooth spring parallax on mouse move
     <motion.div
       className="absolute pointer-events-none select-none"
-      style={{ left: item.x, top: item.y, x: parallaxX, y: parallaxY }}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: [0.07, 0.13, 0.07], y: [0, -12, 0] }}
-      transition={{
-        opacity: { duration: 4, repeat: Infinity, delay: item.delay, ease: "easeInOut" },
-        y:       { duration: 5 + item.delay, repeat: Infinity, delay: item.delay, ease: "easeInOut" },
-      }}
+      style={{ left: item.x, top: item.y, x: springX, y: springY }}
     >
-      <Icon size={item.size} style={{ color: color === "currentColor" ? "var(--foreground)" : color }} />
+      {/* Inner div: floating bob + opacity pulse — separated so they don't conflict */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0.15, 0.26, 0.15], y: [0, -12, 0] }}
+        transition={{
+          opacity: { duration: 4, repeat: Infinity, delay: item.delay, ease: "easeInOut" },
+          y:       { duration: 5 + item.delay, repeat: Infinity, delay: item.delay, ease: "easeInOut" },
+        }}
+      >
+        <Icon size={item.size} style={{ color: color === "currentColor" ? "var(--foreground)" : color }} />
+      </motion.div>
     </motion.div>
   );
 }
