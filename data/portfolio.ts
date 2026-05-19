@@ -162,7 +162,7 @@ export const portfolio = {
       { name: "Git", level: 90 },
       { name: "GitHub", level: 90 },
       { name: "Postman", level: 88 },
-      { name: "VS Code", level: 95 },
+      // { name: "VS Code", level: 95 },
       { name: "Figma", level: 70 },
       { name: "Google Analytics", level: 72 },
     ],
