@@ -346,13 +346,11 @@ export function Projects() {
   const [filter, setFilter] = useState<Filter>("all");
   const [activeProject, setActiveProject] = useState<Project | null>(null);
 
-  const filtered =
+  const filtered = (
     filter === "all"
       ? portfolio.projects
-      : portfolio.projects.filter((p) => p.status === filter);
-
-  const featured = filtered.filter((p) => p.featured);
-  const rest = filtered.filter((p) => !p.featured);
+      : portfolio.projects.filter((p) => p.status === filter)
+  ).slice().sort((a, b) => a.id - b.id);
 
   return (
     <section id="projects" aria-labelledby="projects-heading" className="py-16 md:py-24 bg-muted/30 overflow-hidden">
@@ -399,33 +397,17 @@ export function Projects() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
           >
-            {featured.length > 0 && (
-              <motion.div
-                variants={stagger(0.08)}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: false, margin: "-80px" }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6"
-              >
-                {featured.map((p, i) => (
-                  <ProjectCard key={p.id} project={p} featured index={i} onDetails={() => setActiveProject(p)} />
-                ))}
-              </motion.div>
-            )}
-
-            {rest.length > 0 && (
-              <motion.div
-                variants={stagger(0.06)}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: false, margin: "-80px" }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-              >
-                {rest.map((p, i) => (
-                  <ProjectCard key={p.id} project={p} index={i} onDetails={() => setActiveProject(p)} />
-                ))}
-              </motion.div>
-            )}
+            <motion.div
+              variants={stagger(0.07)}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: false, margin: "-80px" }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
+              {filtered.map((p, i) => (
+                <ProjectCard key={p.id} project={p} index={i} onDetails={() => setActiveProject(p)} />
+              ))}
+            </motion.div>
           </motion.div>
         </AnimatePresence>
       </div>

@@ -53,7 +53,7 @@ export function Services() {
                   {iconMap[service.icon]}
                 </motion.div>
                 <motion.span
-                  className="text-2xl font-mono font-bold text-muted/50 group-hover:text-primary/30 transition-colors"
+                  className="text-2xl font-mono font-bold text-foreground/15 group-hover:text-primary/40 transition-colors"
                   initial={{ opacity: 0, x: 10 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: false }}
