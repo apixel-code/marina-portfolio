@@ -179,7 +179,7 @@ export const portfolio = {
   projects: [
     {
       id: 1,
-      title: "Student Consultancy Site",
+      title: "Student Consultancy App",
       description:
         "Full-stack consultancy platform for student services with course listings, inquiry forms, admission guidance, and an admin management panel.",
       tags: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
@@ -590,7 +590,7 @@ export const portfolio = {
       description:
         "Full-stack reservation platform with real-time slot availability, email confirmation, and an admin panel for table management.",
       tags: ["React", "Node.js", "Express", "MongoDB"],
-      status: "completed" as const,
+      status: "in-progress" as const,
       featured: false,
       liveLink: "https://example.com",
       codeLink: "https://github.com/marinaakter",
