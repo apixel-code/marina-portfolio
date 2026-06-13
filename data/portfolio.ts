@@ -241,7 +241,7 @@ export const portfolio = {
       tags: ["Next.js", "MongoDB", "TypeScript", "Tailwind CSS"],
       status: "completed" as const,
       featured: true,
-      liveLink: "https://armgroup.vercel.app/",
+      liveLink: "https://arm-shop.apixel.net/",
       codeLink: "https://github.com/marinaakter",
       image: "/images/e-commerce.png",
       caseStudy: {
@@ -300,7 +300,7 @@ export const portfolio = {
       tags: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
       status: "completed" as const,
       featured: true,
-      liveLink: "https://apixeltaskflow.vercel.app/",
+      liveLink: "http://taskflow.apixel.net/",
       codeLink: "https://github.com/marinaakter",
       image: "/images/TaskFlow.png",
       caseStudy: {
@@ -479,7 +479,7 @@ export const portfolio = {
       tags: ["Next.js", "MongoDB", "Tailwind CSS", "TypeScript"],
       status: "completed" as const,
       featured: true,
-      liveLink: "https://realestatesite-seven.vercel.app",
+      liveLink: "https://realestatesite-seven.vercel.app/",
       codeLink: "https://github.com/marinaakter",
       image: "/images/RealEstate.png",
       caseStudy: {
