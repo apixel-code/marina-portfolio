@@ -538,7 +538,7 @@ export const portfolio = {
       tags: ["React", "Next.js", "Tailwind CSS"],
       status: "completed" as const,
       featured: true,
-      liveLink: "https://www.dmsbcsh.com/",
+      liveLink: "https://www.bananiclinic.com/",
       codeLink: "https://github.com/marinaakter",
       image: "/images/dentalsite.png",
       caseStudy: {
