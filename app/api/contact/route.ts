@@ -1,10 +1,9 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
-import { portfolio } from "@/data/portfolio";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const OWNER_EMAIL = portfolio.email;
+const OWNER_EMAIL = "marinaakter878@gmail.com";
 
 export async function POST(request: Request) {
   try {
