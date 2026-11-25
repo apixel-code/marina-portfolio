@@ -179,6 +179,210 @@ export const portfolio = {
   projects: [
     {
       id: 1,
+      title: "ApixelPost — AI Social Media SaaS",
+      description:
+        "Apixel's own SaaS product: write one line, AI writes the post, and one click publishes it to Facebook, Instagram, TikTok, YouTube, Pinterest, LinkedIn and more. Scheduling, Google Drive autopilot, subscriptions in USD and BDT.",
+      tags: ["SaaS", "AI", "OAuth", "Chrome Extension", "PWA"],
+      status: "completed" as const,
+      featured: true,
+      liveLink: "https://apixelpost.tech/",
+      codeLink: "https://github.com/marinaakter",
+      image: "/images/ApixelPost.jpg",
+      caseStudy: {
+        overview:
+          "ApixelPost is a SaaS product built and run by Apixel for shops, creators, agencies and local businesses who need to post on many social networks every day. A user writes one line, AI turns it into a ready post tailored to each network, and one click publishes or schedules it everywhere. It runs as a web app, an installable phone app (PWA) and a Chrome extension, with paid plans for customers in Bangladesh and worldwide.",
+        features: [
+          {
+            title: "AI Post Writing",
+            description:
+              "One line in, a separate ready-to-post caption out for each network — in English or Bangla — with a preview and edit step before publishing.",
+          },
+          {
+            title: "One-Click Multi-Network Publishing",
+            description:
+              "Publishes to Facebook Pages, Instagram, TikTok, YouTube, Pinterest, LinkedIn, Threads, Bluesky, Telegram and WordPress, including photos, videos, Reels, Shorts and albums.",
+          },
+          {
+            title: "Scheduling & Calendar",
+            description:
+              "Post now or pick a time; a calendar shows what goes out next.",
+          },
+          {
+            title: "Google Drive Autopilot",
+            description:
+              "Users fill a shared Drive folder with media and a Google Sheet of topics; ApixelPost writes captions and posts 1–6 times a day automatically, in order.",
+          },
+          {
+            title: "Secure Account Connection",
+            description:
+              "Every network is connected through its official OAuth login, so passwords are never seen or stored.",
+          },
+          {
+            title: "Subscriptions & Licensing",
+            description:
+              "7-day free trial with email code sign-up and license keys; three paid plans billed in USD (card/PayPal via Lemon Squeezy) or BDT (bKash, Nagad, Rocket via Paymently).",
+          },
+        ],
+        challenges: [
+          {
+            title: "One post, many very different platforms",
+            solution:
+              "Each network has its own API, media rules and tone, so the AI writes a separate version per network and the publisher handles each platform's upload and format requirements behind a single 'Post' button.",
+          },
+          {
+            title: "Serving local and global customers",
+            solution:
+              "Built two payment paths — international card/PayPal subscriptions and local Taka payments through mobile wallets — feeding one license-key system, so both groups get the same product.",
+          },
+          {
+            title: "Reaching users wherever they work",
+            solution:
+              "Shipped the same product as a web app, an installable PWA for phones and a Chrome extension, all activated with the same license key.",
+          },
+        ],
+        techGroups: [
+          { label: "Platforms", items: ["Web App", "PWA", "Chrome Extension"] },
+          { label: "AI", items: ["AI Captions", "English & Bangla"] },
+          { label: "Integrations", items: ["Meta", "TikTok", "YouTube", "LinkedIn", "Pinterest", "Google Drive", "Google Sheets"] },
+          { label: "Auth", items: ["OAuth", "Email OTP", "License Keys"] },
+          { label: "Payments", items: ["Lemon Squeezy", "bKash / Nagad"] },
+        ],
+      },
+    },
+    {
+      id: 2,
+      title: "GlowRak — E-Commerce Store",
+      description:
+        "Full-stack online store for a UAE retailer selling lighting, chandeliers, hardware, toys and electronics. Category browsing, product search, cart, order tracking and cash-on-delivery across the UAE.",
+      tags: ["React", "Node.js", "MongoDB", "Tailwind CSS"],
+      status: "completed" as const,
+      featured: true,
+      liveLink: "https://glowrak.com/",
+      codeLink: "https://github.com/marinaakter",
+      image: "/images/GlowRak.jpg",
+      caseStudy: {
+        overview:
+          "GlowRak is a UAE retail brand selling lighting, chandeliers, hardware, toys and electronics. I built their complete online store: a fast storefront where customers browse curated categories, search products, add to cart and order with cash on delivery anywhere in the UAE. The client is happy with the result and the store is live and taking orders.",
+        features: [
+          {
+            title: "Category Shopping",
+            description:
+              "Eight product categories (ceiling lights, chandeliers, wall lights, hardware, toys and more) with shareable, URL-based category filters.",
+          },
+          {
+            title: "Product Search",
+            description:
+              "Search bar in the header so customers can find any product, brand or style in seconds.",
+          },
+          {
+            title: "Featured & Trending Sections",
+            description:
+              "Homepage hero carousel, promo ticker, and curated Featured and Trending product rows with ratings and AED pricing.",
+          },
+          {
+            title: "Cart, Checkout & Order Tracking",
+            description:
+              "Cart, cash-on-delivery checkout across the UAE, and a Track Order page so customers can follow their order after purchase.",
+          },
+          {
+            title: "WhatsApp Support",
+            description:
+              "Floating WhatsApp button for instant customer support and pre-sales questions.",
+          },
+          {
+            title: "Store Policies",
+            description:
+              "Privacy, terms and return & refund policy pages that build trust for first-time buyers.",
+          },
+        ],
+        challenges: [
+          {
+            title: "Many very different product types in one store",
+            solution:
+              "Designed a flexible product and category model so lighting, hardware, toys and electronics share one catalogue, with category filters driven by the URL so every filtered view can be shared or bookmarked.",
+          },
+          {
+            title: "Building trust for cash-on-delivery buyers",
+            solution:
+              "Added clear delivery and returns messaging, visible policies, order tracking and one-tap WhatsApp support, so new customers feel safe ordering from a new brand.",
+          },
+        ],
+        techGroups: [
+          { label: "Frontend", items: ["React", "Vite", "Tailwind CSS"] },
+          { label: "Backend", items: ["Node.js", "Express", "REST API"] },
+          { label: "Database", items: ["MongoDB"] },
+          { label: "Payments", items: ["Cash on Delivery"] },
+        ],
+      },
+    },
+    {
+      id: 3,
+      title: "Iqos Haven — Age-Restricted Store",
+      description:
+        "Adults-only e-commerce store in Dubai built with Next.js. Server-side 18+ age gate, UAE-wide delivery, multiple payment options and full compliance pages for a regulated product category.",
+      tags: ["Next.js", "TypeScript", "Tailwind CSS"],
+      status: "completed" as const,
+      featured: true,
+      liveLink: "https://iqoshaven.com/",
+      codeLink: "https://github.com/marinaakter",
+      image: "/images/IqosHaven.png",
+      caseStudy: {
+        overview:
+          "Iqos Haven is a Dubai-based, adults-only retailer delivering across all seven emirates. Because it sells an age-restricted, regulated product, the store had to be built around compliance from the first screen to delivery: a server-side age gate, age confirmation at checkout, and clear terms, privacy and responsible-use policies. The client is satisfied and the store is live.",
+        features: [
+          {
+            title: "Server-Side Age Gate",
+            description:
+              "18+ check on entry, handled on the server so it works even without JavaScript. The answer is remembered on the device for 30 days.",
+          },
+          {
+            title: "Compliant Checkout",
+            description:
+              "Age confirmed again at checkout, with delivery fee and expected delivery time shown for the customer's area before ordering.",
+          },
+          {
+            title: "Flexible Payments",
+            description:
+              "Cash on delivery, bank transfer, or a secure online payment link — the store never asks for card details on-site.",
+          },
+          {
+            title: "Order Flow & Confirmation",
+            description:
+              "Order number on screen, email confirmation, discount codes, and order confirmation by call or WhatsApp before dispatch.",
+          },
+          {
+            title: "Moderated Reviews",
+            description:
+              "Review requests sent by email after delivery, moderated before they are published.",
+          },
+          {
+            title: "Compliance & SEO",
+            description:
+              "Terms, privacy and responsible-use pages, plus auto-generated social preview images for every share.",
+          },
+        ],
+        challenges: [
+          {
+            title: "A reliable age gate for a regulated product",
+            solution:
+              "Built the age check with Next.js server routes and a 30-day cookie instead of a client-only popup, so it can't be skipped by disabling JavaScript, and repeated the check at checkout.",
+          },
+          {
+            title: "Payments without collecting card data",
+            solution:
+              "Designed the order flow around cash on delivery, bank transfer and secure payment links sent via WhatsApp, keeping card details off the site entirely.",
+          },
+        ],
+        techGroups: [
+          { label: "Frontend", items: ["Next.js", "React", "TypeScript", "Tailwind CSS"] },
+          { label: "Backend", items: ["Next.js Route Handlers"] },
+          { label: "Payments", items: ["COD", "Bank Transfer", "Payment Links"] },
+          { label: "Deployment", items: ["Vercel"] },
+        ],
+      },
+    },
+    {
+      id: 4,
       title: "Student Consultancy App",
       description:
         "Full-stack consultancy platform for student services with course listings, inquiry forms, admission guidance, and an admin management panel.",
@@ -234,7 +438,7 @@ export const portfolio = {
       },
     },
     {
-      id: 2,
+      id: 5,
       title: "E-Commerce Platform",
       description:
         "Full-stack e-commerce solution for ARM Group with product catalogue, cart, checkout flow, and order management. Built with Next.js App Router and MongoDB.",
@@ -293,7 +497,7 @@ export const portfolio = {
       },
     },
     {
-      id: 3,
+      id: 6,
       title: "Task Management SaaS",
       description:
         "Apixel's internal task flow platform with project boards, team workspaces, and role-based access control. Built with React and a Node/Express backend.",
@@ -349,7 +553,61 @@ export const portfolio = {
       },
     },
     {
-      id: 4,
+      id: 7,
+      title: "Medical & Health",
+      description:
+        "Healthcare information platform for a medical institution featuring department listings, doctor profiles, appointment details, and patient resources.",
+      tags: ["React", "Next.js", "Tailwind CSS"],
+      status: "completed" as const,
+      featured: true,
+      liveLink: "https://www.bananiclinic.com/",
+      codeLink: "https://github.com/marinaakter",
+      image: "/images/dentalsite.png",
+      caseStudy: {
+        overview:
+          "Healthcare information platform for a medical institution, giving patients clear and accessible information about departments, doctors, and available services. Built with a strong emphasis on accessibility, readability, and trust — critical factors in a medical context.",
+        features: [
+          {
+            title: "Department Listings",
+            description:
+              "Structured department pages covering specialties, facilities, and available services for each unit.",
+          },
+          {
+            title: "Doctor Profiles",
+            description:
+              "Individual profiles with qualifications, specialties, consultation schedule, and direct contact details.",
+          },
+          {
+            title: "Appointment Information",
+            description:
+              "Clear booking guidance with department-specific contact details and operating hours per service.",
+          },
+          {
+            title: "Patient Resources",
+            description:
+              "Library of patient guides, downloadable forms, and FAQs organised by department for easy self-service.",
+          },
+        ],
+        challenges: [
+          {
+            title: "Accessibility compliance for a medical audience",
+            solution:
+              "Implemented WCAG 2.1 AA — semantic HTML, ARIA labels, sufficient colour contrast ratios, and full keyboard navigation throughout.",
+          },
+          {
+            title: "Managing a large nested content structure",
+            solution:
+              "Designed a hierarchical data model separating departments, doctors, and resources with shared layout components to eliminate duplication.",
+          },
+        ],
+        techGroups: [
+          { label: "Frontend", items: ["React", "Next.js", "Tailwind CSS"] },
+          { label: "Deployment", items: ["Vercel"] },
+        ],
+      },
+    },
+    {
+      id: 8,
       title: "IT Solutions Website",
       description:
         "Corporate website for an IT solutions company with service showcases, project portfolio, client testimonials, and a contact system. Fully responsive and SEO-optimised.",
@@ -407,7 +665,7 @@ export const portfolio = {
       },
     },
     {
-      id: 5,
+      id: 9,
       title: "AI Chat Assistant",
       description:
         "Production-grade AI chat app built with Next.js App Router, OpenAI GPT-4o, and Vercel AI SDK. Features streaming responses, conversation history, and a clean chat UI.",
@@ -472,7 +730,7 @@ export const portfolio = {
       },
     },
     {
-      id: 6,
+      id: 10,
       title: "Real Estate Website",
       description:
         "Property listing platform with advanced search filters, property detail pages, agent profiles, virtual tour support, and a contact inquiry system.",
@@ -531,118 +789,72 @@ export const portfolio = {
       },
     },
     {
-      id: 7,
-      title: "Medical & Health",
+      id: 11,
+      title: "Ember & Oak — Café Website",
       description:
-        "Healthcare information platform for a medical institution featuring department listings, doctor profiles, appointment details, and patient resources.",
-      tags: ["React", "Next.js", "Tailwind CSS"],
+        "Warm, conversion-focused website for a specialty coffee & bakery café. Full menu with filters, order-ahead cart, combo deals, a live 'next tray' countdown and WhatsApp ordering.",
+      tags: ["Next.js", "React", "Tailwind CSS"],
       status: "completed" as const,
-      featured: true,
-      liveLink: "https://www.bananiclinic.com/",
-      codeLink: "https://github.com/marinaakter",
-      image: "/images/dentalsite.png",
-      caseStudy: {
-        overview:
-          "Healthcare information platform for a medical institution, giving patients clear and accessible information about departments, doctors, and available services. Built with a strong emphasis on accessibility, readability, and trust — critical factors in a medical context.",
-        features: [
-          {
-            title: "Department Listings",
-            description:
-              "Structured department pages covering specialties, facilities, and available services for each unit.",
-          },
-          {
-            title: "Doctor Profiles",
-            description:
-              "Individual profiles with qualifications, specialties, consultation schedule, and direct contact details.",
-          },
-          {
-            title: "Appointment Information",
-            description:
-              "Clear booking guidance with department-specific contact details and operating hours per service.",
-          },
-          {
-            title: "Patient Resources",
-            description:
-              "Library of patient guides, downloadable forms, and FAQs organised by department for easy self-service.",
-          },
-        ],
-        challenges: [
-          {
-            title: "Accessibility compliance for a medical audience",
-            solution:
-              "Implemented WCAG 2.1 AA — semantic HTML, ARIA labels, sufficient colour contrast ratios, and full keyboard navigation throughout.",
-          },
-          {
-            title: "Managing a large nested content structure",
-            solution:
-              "Designed a hierarchical data model separating departments, doctors, and resources with shared layout components to eliminate duplication.",
-          },
-        ],
-        techGroups: [
-          { label: "Frontend", items: ["React", "Next.js", "Tailwind CSS"] },
-          { label: "Deployment", items: ["Vercel"] },
-        ],
-      },
-    },
-    {
-      id: 8,
-      title: "Restaurant Booking System",
-      description:
-        "Full-stack reservation platform with real-time slot availability, email confirmation, and an admin panel for table management.",
-      tags: ["React", "Node.js", "Express", "MongoDB"],
-      status: "in-progress" as const,
       featured: false,
-      liveLink: "https://example.com",
+      liveLink: "https://demo.apixel.net/",
       codeLink: "https://github.com/marinaakter",
-      image:
-        "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&h=450&fit=crop&q=80",
+      image: "/images/EmberOak.jpg",
       caseStudy: {
         overview:
-          "A real-time restaurant reservation system replacing error-prone phone bookings. Customers check live table availability, select a slot, and receive instant email confirmation — while the restaurant manages everything from a clean admin panel.",
+          "Ember & Oak is a café website built for specialty coffee shops and bakeries. The goal: make the place feel warm and inviting online, and turn visitors into orders. Guests can browse the full menu, build an order for pickup, grab combo deals and send their order on WhatsApp in a few taps — while live touches like 'still warm' badges and a countdown to the next fresh tray create real urgency.",
         features: [
           {
-            title: "Real-Time Slot Availability",
+            title: "Filterable Online Menu",
             description:
-              "Live availability grid showing open, reserved, and blocked time slots, updated instantly after each booking.",
+              "23 items across 6 categories with search, favourites and dietary filters (Vegan, Gluten-free, Contains nuts), plus allergens on every item.",
           },
           {
-            title: "Email Confirmation",
+            title: "Order Ahead & Checkout",
             description:
-              "Automated confirmation emails on booking with full reservation details and a one-click cancellation link.",
+              "Add drinks and bakes to a cart, customise coffee options, and check out for pickup — ready in about 10 minutes.",
           },
           {
-            title: "Admin Panel",
+            title: "WhatsApp Ordering",
             description:
-              "Restaurant staff can view all upcoming bookings, block time slots for events, and adjust table configurations.",
+              "One-tap 'Order on WhatsApp' with a pre-filled message, so guests can order the way they already chat.",
           },
           {
-            title: "Table Management",
+            title: "Live Freshness & Scarcity",
             description:
-              "Configurable table capacity and cover counts per slot, with walk-in override support for staff.",
+              "Countdown to the next tray out of the oven, 'still warm' and 'only 4 left' badges, and an 'Open now' status from the opening hours.",
+          },
+          {
+            title: "Combo Deals & Craving Picker",
+            description:
+              "Time-based coffee + pastry combos with savings shown, and a 'What are you craving?' picker that recommends an item instantly.",
+          },
+          {
+            title: "Trust & Visit Info",
+            description:
+              "Google rating and reviews, Instagram feed, opening hours, map directions and a birthday newsletter signup.",
           },
         ],
         challenges: [
           {
-            title: "Preventing double-bookings under concurrent requests",
+            title: "Making a small café feel alive online",
             solution:
-              "Used MongoDB transactions with optimistic locking — each slot update checks availability and reserves in a single atomic operation, eliminating race conditions.",
+              "Added time-aware UI — open/closed status, next-tray countdown, time-limited combos and stock badges — so the site reflects what is happening in the café right now, not a static brochure.",
           },
           {
-            title: "Email delivery reliability",
+            title: "Ordering without forcing an app or account",
             solution:
-              "Integrated Nodemailer with a retry queue for failed sends, logging failures to the database for manual follow-up.",
+              "Kept ordering lightweight: a guest cart with pickup checkout, plus a pre-filled WhatsApp message as a zero-friction alternative.",
           },
         ],
         techGroups: [
-          { label: "Frontend", items: ["React", "Tailwind CSS"] },
-          { label: "Backend", items: ["Node.js", "Express"] },
-          { label: "Database", items: ["MongoDB"] },
-          { label: "Email", items: ["Nodemailer"] },
+          { label: "Frontend", items: ["Next.js", "React", "Tailwind CSS"] },
+          { label: "Ordering", items: ["Cart & Checkout", "WhatsApp"] },
+          { label: "Integrations", items: ["Google Maps", "Instagram"] },
         ],
       },
     },
     {
-      id: 9,
+      id: 12,
       title: "Algorithm Visualizer",
       description:
         "Interactive visualizer for sorting and graph algorithms. Supports BFS, DFS, Dijkstra, QuickSort, and MergeSort with step-by-step animation controls.",
