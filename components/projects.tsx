@@ -297,12 +297,9 @@ function ProjectCard({
           </Badge>
         </div>
 
-        {/* Hover overlay */}
-        <motion.div
-          className="absolute inset-0 bg-black/30 backdrop-blur-[2px] flex items-center justify-center gap-3"
-          initial={{ opacity: 0 }}
-          whileHover={{ opacity: 1 }}
-          transition={{ duration: 0.2 }}
+        {/* Hover overlay — mouse/keyboard only; touch devices get the buttons below instead */}
+        <div
+          className="absolute inset-0 bg-black/30 backdrop-blur-[2px] flex items-center justify-center gap-3 opacity-0 transition-opacity duration-200 group-hover:opacity-100 focus-within:opacity-100 [@media(hover:none)]:hidden"
         >
           <motion.a
             href={project.liveLink}
@@ -324,7 +321,7 @@ function ProjectCard({
             <Info size={13} />
             Details
           </motion.button>
-        </motion.div>
+        </div>
       </motion.div>
 
       <div className="p-5">
@@ -334,6 +331,26 @@ function ProjectCard({
           {project.tags.map((tag) => (
             <Badge key={tag} variant="outline">{tag}</Badge>
           ))}
+        </div>
+
+        {/* Always-visible actions on touch devices (no hover available) */}
+        <div className="hidden [@media(hover:none)]:flex gap-2 mt-4">
+          <a
+            href={project.liveLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg bg-primary text-primary-foreground text-sm font-medium"
+          >
+            <ExternalLink size={13} />
+            Live
+          </a>
+          <button
+            onClick={onDetails}
+            className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-lg border border-border text-foreground text-sm font-medium cursor-pointer"
+          >
+            <Info size={13} />
+            Details
+          </button>
         </div>
       </div>
     </motion.article>

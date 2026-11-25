@@ -67,7 +67,7 @@ const contactItems: ContactInfo[] = [
 ];
 
 export function Contact() {
-  const [formState, setFormState] = useState({ name: "", email: "", subject: "", message: "" });
+  const [formState, setFormState] = useState({ name: "", email: "", subject: "", message: "", website: "" });
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [serverError, setServerError] = useState("");
@@ -105,7 +105,7 @@ export function Contact() {
       }
 
       setSubmitted(true);
-      setFormState({ name: "", email: "", subject: "", message: "" });
+      setFormState({ name: "", email: "", subject: "", message: "", website: "" });
       setErrors({});
     } catch {
       setServerError("Network error. Please check your connection and try again.");
@@ -200,21 +200,35 @@ export function Contact() {
               <motion.form
                 onSubmit={handleSubmit}
                 noValidate
-                className="rounded-2xl border border-border bg-card p-4 sm:p-6 space-y-4 sm:space-y-5 shadow-sm dark:shadow-none"
+                className="relative rounded-2xl border border-border bg-card p-4 sm:p-6 space-y-4 sm:space-y-5 shadow-sm dark:shadow-none"
                 variants={stagger(0.07)}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: false, margin: "-100px" }}
               >
+                {/* Honeypot — hidden from people, bots fill it in */}
+                <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
+                  <label>
+                    Website
+                    <input
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={formState.website}
+                      onChange={(e) => setFormState((s) => ({ ...s, website: e.target.value }))}
+                    />
+                  </label>
+                </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   {[
-                    { key: "name", label: "Name", type: "text", placeholder: "Your name" },
-                    { key: "email", label: "Email", type: "email", placeholder: "your@email.com" },
+                    { key: "name", label: "Name", type: "text", placeholder: "Your name", maxLength: 100 },
+                    { key: "email", label: "Email", type: "email", placeholder: "your@email.com", maxLength: 200 },
                   ].map((field) => (
                     <motion.div key={field.key} variants={inputVariants}>
                       <label className="block text-sm font-medium text-foreground mb-1.5">{field.label}</label>
                       <input
                         type={field.type}
+                        maxLength={field.maxLength}
                         value={formState[field.key as keyof typeof formState]}
                         onChange={(e) => setFormState((s) => ({ ...s, [field.key]: e.target.value }))}
                         className="w-full px-4 py-2.5 rounded-xl border border-border bg-muted text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-primary/40 transition-all"
@@ -228,6 +242,7 @@ export function Contact() {
                   <label className="block text-sm font-medium text-foreground mb-1.5">Subject</label>
                   <input
                     type="text"
+                    maxLength={200}
                     value={formState.subject}
                     onChange={(e) => setFormState((s) => ({ ...s, subject: e.target.value }))}
                     className="w-full px-4 py-2.5 rounded-xl border border-border bg-muted text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-primary/40 transition-all"
@@ -239,6 +254,7 @@ export function Contact() {
                   <label className="block text-sm font-medium text-foreground mb-1.5">Message</label>
                   <textarea
                     rows={5}
+                    maxLength={5000}
                     value={formState.message}
                     onChange={(e) => setFormState((s) => ({ ...s, message: e.target.value }))}
                     className="w-full px-4 py-2.5 rounded-xl border border-border bg-muted text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:border-primary/40 transition-all resize-none"

@@ -5,9 +5,9 @@ export const portfolio = {
   tagline:
     "Building scalable web applications, integrating AI into products, and solving complex problems with clean, performant code.",
   shortBio:
-    "I'm Marina, a MERN stack developer and Founder & COO of Apixel — an IT company delivering full-stack web solutions. I love turning hard problems into elegant, performant code and I'm actively integrating AI into the products we build at Apixel.",
+    "I'm Marina, a MERN stack developer and Founder & CTO of Apixel — an IT company delivering full-stack web solutions. I love turning hard problems into elegant, performant code and I'm actively integrating AI into the products we build at Apixel.",
   longBio:
-    "I'm a full-stack engineer specializing in the MERN stack — React, Next.js, Node.js, Express, and MongoDB. As Founder & COO of Apixel (apixel.net), I lead engineering and product delivery for clients across multiple industries. I architect and ship complete web applications with a strong emphasis on clean code, scalable architecture, and real-world performance. With AI transforming every industry, I'm building AI-powered features into our products — integrating OpenAI APIs, LangChain pipelines, and vector search into MERN applications. I'm also an active competitive programmer, which keeps my algorithmic thinking sharp for complex engineering challenges.",
+    "I'm a full-stack engineer specializing in the MERN stack — React, Next.js, Node.js, Express, and MongoDB. As Founder & CTO of Apixel (apixel.net), I lead engineering and product delivery for clients across multiple industries. I architect and ship complete web applications with a strong emphasis on clean code, scalable architecture, and real-world performance. With AI transforming every industry, I'm building AI-powered features into our products — integrating OpenAI APIs, LangChain pipelines, and vector search into MERN applications. I'm also an active competitive programmer, which keeps my algorithmic thinking sharp for complex engineering challenges.",
   location: "Dhaka, Bangladesh",
   university: "Independent University, Bangladesh (IUB)",
   email: "marinaakter.me@gmail.com",
@@ -19,7 +19,7 @@ export const portfolio = {
   apixel: {
     name: "Apixel",
     url: "https://www.apixel.net",
-    role: "Founder & COO",
+    role: "Founder & CTO",
   },
 
   navLinks: [
@@ -706,7 +706,7 @@ export const portfolio = {
     {
       id: 1,
       type: "work" as const,
-      title: "Founder & COO",
+      title: "Founder & CTO",
       organization: "Apixel — IT Company",
       organizationUrl: "https://www.apixel.net",
       location: "Dhaka, Bangladesh",
